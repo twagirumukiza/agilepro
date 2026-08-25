@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agile Academy — Formations & Diagnostic Agile</title>
+<style>
+:root{--bg:#06101d;--card:#0d1a2b;--card2:#10223a;--text:#f4f8ff;--muted:#9db0c7;--line:#203650;--cyan:#67e8f9;--violet:#9b8cff;--green:#34d399;--orange:#fbbf24}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at 75% -10%,#243469 0,#06101d 38%);color:var(--text);line-height:1.5}a{text-decoration:none;color:inherit}.wrap{max-width:1180px;margin:auto;padding:0 24px}
+nav{height:74px;display:flex;align-items:center;position:sticky;top:0;z-index:20;background:#06101ddd;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff0c}.navin{width:100%;display:flex;justify-content:space-between;align-items:center}.logo{font-weight:950;letter-spacing:-.05em;font-size:20px}.logo span{color:var(--cyan)}.links{display:flex;gap:25px;color:var(--muted);font-size:14px}.btn{border:0;border-radius:12px;padding:12px 18px;font-weight:850;cursor:pointer;background:linear-gradient(135deg,var(--cyan),#818cf8);color:#05101a}.ghost{background:#ffffff08;color:var(--text);border:1px solid var(--line)}
+.hero{padding:85px 0 65px;display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}.eyebrow,.tag{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.09em;color:var(--cyan)}.eyebrow{display:inline-block;border:1px solid #67e8f933;border-radius:999px;padding:7px 11px}h1{font-size:clamp(44px,6vw,76px);line-height:.98;letter-spacing:-.065em;margin:20px 0}.grad{background:linear-gradient(110deg,#fff,var(--cyan),#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent}.lead{font-size:19px;color:var(--muted);max-width:700px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0}
+.panel{background:linear-gradient(145deg,#13263f,#091524);border:1px solid var(--line);border-radius:24px;padding:27px;box-shadow:0 25px 80px #0008}.score{font-size:58px;font-weight:950}.meter{height:10px;background:#ffffff0d;border-radius:99px;overflow:hidden}.meter i{display:block;height:100%;width:78%;background:linear-gradient(90deg,var(--cyan),var(--violet))}
+section{padding:70px 0}.title{max-width:740px;margin-bottom:30px}.title h2{font-size:40px;letter-spacing:-.045em;margin:7px 0}.title p{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{padding:24px;border:1px solid var(--line);border-radius:20px;background:#ffffff04}.card h3{font-size:25px;margin:8px 0}.card p{color:var(--muted)}.price{font-size:26px;font-weight:900;margin:18px 0}
+.quizcards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.quizcard{padding:21px;border:1px solid var(--line);border-radius:19px;background:linear-gradient(160deg,#11243b,#091522);transition:.2s}.quizcard:hover{transform:translateY(-4px);border-color:#67e8f966}.quizcard h3{margin:8px 0}.quizcard p{font-size:14px;color:var(--muted);min-height:65px}
+#quizApp{display:none;margin-top:28px;border:1px solid var(--line);border-radius:24px;background:#0a1727;padding:26px}.quizhead{display:flex;justify-content:space-between;gap:20px;align-items:center}.progress{height:7px;background:#ffffff0b;border-radius:99px;margin:18px 0}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--violet));width:0}.qtext{font-size:24px;font-weight:800;line-height:1.25;margin:25px 0}.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}.opt{padding:17px;border:1px solid var(--line);border-radius:14px;background:#ffffff04;color:var(--text);text-align:left;cursor:pointer;font-weight:700}.opt:hover{border-color:var(--cyan);background:#67e8f910}.opt.correct{border-color:var(--green);background:#34d39915}.opt.wrong{border-color:#fb7185;background:#fb718515}.feedback{margin-top:18px;padding:15px;border-radius:13px;background:#ffffff06;color:var(--muted);display:none}.result{display:none;text-align:center;padding:20px}.resultScore{font-size:70px;font-weight:950}.recommend{margin:20px auto;max-width:620px;padding:20px;border:1px solid #67e8f933;border-radius:17px;background:#67e8f908}.resultActions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.step{padding:20px;border-left:2px solid var(--violet);background:#ffffff04;border-radius:0 14px 14px 0}.step b{color:var(--violet);display:block}.step p{color:var(--muted)}
+.cta{display:flex;justify-content:space-between;gap:30px;align-items:center;padding:44px;border-radius:28px;background:linear-gradient(120deg,#172c48,#17183d);border:1px solid #ffffff12}.cta h2{font-size:37px;margin:0}.cta p{color:var(--muted);max-width:650px}footer{padding:35px 0;color:var(--muted);border-top:1px solid var(--line);font-size:13px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.quizcards{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}.links{display:none}}@media(max-width:560px){.quizcards,.steps,.opts{grid-template-columns:1fr}h1{font-size:48px}.qtext{font-size:20px}.cta{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<nav><div class="wrap navin"><a class="logo" href="#">AGILE<span>ACADEMY</span></a><div class="links"><a href="#formations">Formations</a><a href="#diagnostic">Diagnostic</a><a href="#methode">Méthode</a></div><a class="btn" href="#contact">Demander un devis</a></div></nav>
+
+<section class="hero wrap">
+<div><span class="eyebrow">Scrum • Kanban • Lean Startup • Agile</span><h1>Transformez vos méthodes de travail en <span class="grad">résultats.</span></h1><p class="lead">Des formations Agile orientées terrain, complétées par un diagnostic de maturité gratuit pour identifier vos axes de progression.</p><div class="actions"><a class="btn" href="#formations">Découvrir les formations</a><a class="btn ghost" href="#diagnostic">Faire le diagnostic</a></div></div>
+<div class="panel"><span class="tag">Exemple de restitution</span><h3>Maturité Agile</h3><div class="score">78<span style="font-size:20px;color:var(--muted)">/100</span></div><div class="meter"><i></i></div><p style="color:var(--muted)">Niveau : Intermédiaire avancé</p><hr style="border:0;border-top:1px solid var(--line);margin:22px 0"><strong style="color:var(--cyan)">Formation recommandée</strong><p>Kanban — flux & amélioration continue</p></div>
+</section>
+
+<section id="formations"><div class="wrap"><div class="title"><span class="tag">Catalogue</span><h2>Des formations qui débouchent sur la pratique.</h2><p>Apports essentiels, ateliers, simulations, cas professionnels et évaluation.</p></div><div class="grid">
+<article class="card"><span class="tag">01</span><h3>Scrum</h3><p>Framework, rôles, événements, artefacts, Product Backlog, Sprint et empirisme.</p><div class="price">Sur devis</div><a class="btn ghost" href="#contact">Découvrir</a></article>
+<article class="card"><span class="tag">02</span><h3>Kanban</h3><p>Flux, visualisation, WIP, politiques explicites, métriques et amélioration.</p><div class="price">Sur devis</div><a class="btn ghost" href="#contact">Découvrir</a></article>
+<article class="card"><span class="tag">03</span><h3>Lean Startup</h3><p>Hypothèses, MVP, expérimentation, métriques d'apprentissage, pivot et décision.</p><div class="price">Sur devis</div><a class="btn ghost" href="#contact">Découvrir</a></article>
+</div></div></section>
+
+<section id="diagnostic"><div class="wrap"><div class="title"><span class="tag">Diagnostic gratuit</span><h2>Mesurez votre maturité Agile.</h2><p>20 questions par méthode. Le score est calculé automatiquement et débouche sur une recommandation pédagogique.</p></div>
+<div class="quizcards">
+<div class="quizcard"><span class="tag">20 questions</span><h3>Scrum</h3><p>5 fondamentaux · 5 pratiques · 5 situations · 5 amélioration continue</p><button class="btn" onclick="startQuiz('scrum')">Commencer</button></div>
+<div class="quizcard"><span class="tag">20 questions</span><h3>Kanban</h3><p>Flux · WIP · politiques · métriques · amélioration continue</p><button class="btn" onclick="startQuiz('kanban')">Commencer</button></div>
+<div class="quizcard"><span class="tag">20 questions</span><h3>Lean Startup</h3><p>Hypothèses · MVP · expérimentation · métriques · pivot</p><button class="btn" onclick="startQuiz('lean')">Commencer</button></div>
+<div class="quizcard"><span class="tag">20 questions</span><h3>Agile global</h3><p>Valeur · collaboration · adaptation · culture · apprentissage</p><button class="btn" onclick="startQuiz('agile')">Commencer</button></div>
+</div>
+
+<div id="quizApp"><div class="quizhead"><strong id="quizName">Diagnostic</strong><span id="counter"></span></div><div class="progress"><i id="progressBar"></i></div><div id="questionArea"></div><div id="result" class="result"></div></div>
+</div></section>
+
+<section id="methode"><div class="wrap"><div class="title"><span class="tag">Notre approche</span><h2>Comprendre. Pratiquer. Évaluer. Progresser.</h2><p>Une logique simple pour transformer la formation en compétences opérationnelles.</p></div><div class="steps"><div class="step"><b>01</b><strong>Comprendre</strong><p>Principes et concepts.</p></div><div class="step"><b>02</b><strong>Pratiquer</strong><p>Ateliers et simulations.</p></div><div class="step"><b>03</b><strong>Évaluer</strong><p>Quiz et maturité.</p></div><div class="step"><b>04</b><strong>Progresser</strong><p>Plan d'action adapté.</p></div></div></div></section>
+
+<section id="contact"><div class="wrap"><div class="cta"><div><h2>Votre équipe est-elle vraiment Agile ?</h2><p>Commencez gratuitement par un diagnostic, puis construisez le parcours de formation adapté.</p></div><a class="btn" href="mailto:contact@agile-academy.fr?subject=Diagnostic%20et%20formation%20Agile">Demander un devis</a></div></div></section>
+<footer><div class="wrap">© 2026 Agile Academy · Formations Scrum, Kanban & Lean Startup · Mentions légales · RGPD</div></footer>
+
+<script>
+const base=[
+["Quel est l’objectif central de Scrum ?","Créer un cadre pour générer de la valeur de façon empirique","Produire davantage de documentation","Supprimer toute planification","Garantir un résultat fixe à long terme"],
+["Quel artefact Scrum contient la liste ordonnée de ce qui est nécessaire pour améliorer le produit ?","Product Backlog","Sprint Backlog","Burndown Chart","Definition of Done"],
+["Qui est responsable de maximiser la valeur du produit dans Scrum ?","Product Owner","Scrum Master","Développeurs","Sponsor"],
+["Quel événement permet d’inspecter le résultat du Sprint et d’adapter le Product Backlog ?","Sprint Review","Daily Scrum","Sprint Planning","Rétrospective"],
+["À quoi sert principalement la Sprint Retrospective ?","Identifier des améliorations pour accroître la qualité et l’efficacité","Présenter le produit aux utilisateurs","Attribuer les tâches aux membres","Valider le budget annuel"],
+["Quel principe est au cœur de Scrum ?","Empirisme","Prédiction parfaite","Contrôle hiérarchique","Spécification exhaustive"],
+["Le Sprint Backlog est principalement…","Le plan des Developers pour atteindre le Sprint Goal","La liste complète des demandes clients","Le calendrier annuel du produit","Le registre des risques"],
+["La Definition of Done sert notamment à…","Définir l’état attendu d’un Increment pour être considéré comme complet","Définir le budget du Sprint","Choisir le Product Owner","Remplacer le Product Goal"],
+["Une équipe Scrum découvre pendant le Sprint que son approche ne fonctionne pas. La meilleure réponse est…","Inspecter, adapter et préserver l’objectif du Sprint","Attendre la fin du projet","Masquer le problème","Augmenter automatiquement le nombre de tâches"],
+["Une équipe termine toujours les Sprints mais livre peu de valeur. Quel axe est prioritaire ?","Inspecter la valeur produite et la priorisation du Product Backlog","Ajouter davantage de réunions","Augmenter la durée des Sprints","Multiplier les rapports"],
+["Le Daily Scrum est principalement destiné à…","Inspecter la progression vers le Sprint Goal et adapter le plan","Faire un compte rendu au manager","Résoudre tous les problèmes techniques","Présenter le produit au client"],
+["Dans Scrum, qui décide comment transformer les éléments sélectionnés en Increment ?","Les Developers","Le Product Owner seul","Le Scrum Master seul","Le sponsor"],
+["Un Product Backlog efficace doit être…","Ordonné et suffisamment transparent pour soutenir les décisions","Figé pour toute la durée du produit","Exclusivement technique","Réservé au management"],
+["Quel comportement indique une bonne maturité Scrum ?","L’équipe utilise les événements pour inspecter et adapter réellement son travail","Les événements sont uniquement des réunions de reporting","Le Product Owner attribue chaque tâche","Les Sprints servent à éviter les changements"],
+["Une équipe mesure uniquement le nombre de tickets terminés. Quel risque existe ?","Confondre activité et valeur","Mesurer trop précisément la valeur","Garantir la satisfaction client","Supprimer le besoin de priorisation"],
+["Le Sprint Goal permet surtout de…","Donner un objectif cohérent au Sprint et guider les décisions","Décrire toutes les tâches techniques","Fixer le budget annuel","Remplacer le Product Goal"],
+["Quel signe montre une maturité avancée ?","L’équipe apprend de ses résultats et adapte régulièrement ses pratiques","L’équipe suit toujours exactement le même processus","Les métriques servent uniquement à classer les individus","Toutes les décisions sont prises hors de l’équipe"],
+["Si un Increment ne respecte pas la Definition of Done…","Il n’est pas considéré comme complet selon cette Definition of Done","Il doit quand même être présenté comme terminé","Le Scrum Master peut le déclarer terminé","Il devient automatiquement un Product Goal"],
+["Quel est un bon indicateur de maturité Agile ?","La capacité à adapter le travail à partir d’informations fiables et de retours","Le nombre de cérémonies réalisées","Le volume de documentation produit","Le nombre d’outils utilisés"],
+["Après plusieurs Sprints, l’équipe constate un problème récurrent. La meilleure démarche est…","Analyser la cause, choisir une amélioration et vérifier son effet","Ajouter immédiatement une nouvelle réunion","Changer tous les rôles","Ignorer le problème s’il n’empêche pas le Sprint de finir"]];
+
+const bank={
+scrum:base,
+kanban:[
+["Quel est l’objectif principal de Kanban ?","Améliorer le flux de travail et la livraison de valeur","Imposer des Sprints fixes","Créer une hiérarchie d’équipe","Supprimer toute mesure"],
+["Que signifie WIP ?","Work In Progress","Workflow Integration Plan","Weekly Improvement Process","Work Item Priority"],
+["Pourquoi limiter le WIP ?","Pour réduire l’encombrement et favoriser un flux plus fluide","Pour empêcher toute collaboration","Pour supprimer les priorités","Pour augmenter le nombre de tâches ouvertes"],
+["Une politique explicite dans Kanban sert à…","Rendre les règles de fonctionnement du flux compréhensibles","Remplacer toutes les métriques","Créer un organigramme","Fixer les salaires"],
+["Quel élément est typiquement visualisé sur un tableau Kanban ?","Les éléments de travail et leur état dans le flux","Les congés uniquement","Les salaires","Les contrats fournisseurs"],
+["Quel principe Kanban recommande-t-on généralement ?","Commencer par ce qui existe et améliorer progressivement","Remplacer immédiatement toute l’organisation","Imposer un framework complet","Supprimer les processus existants"],
+["Le cycle time mesure principalement…","Le temps nécessaire à un élément pour traverser le flux","Le nombre de personnes dans l’équipe","Le budget du projet","La durée des réunions"],
+["Une file d’attente devient très longue. Quelle première réaction est cohérente ?","Chercher la contrainte du système et agir sur le flux","Ouvrir encore plus de travail","Ajouter des colonnes sans analyse","Supprimer la mesure"],
+["Quel comportement est mature en Kanban ?","Limiter le travail commencé et terminer davantage avant de démarrer","Maximiser le nombre de tâches simultanées","Mesurer uniquement l’occupation individuelle","Changer le tableau chaque semaine sans données"],
+["Pourquoi visualiser le travail ?","Pour rendre le flux et les blocages visibles","Pour surveiller individuellement les salariés","Pour remplacer les conversations","Pour éviter les décisions"],
+["Le débit (throughput) correspond à…","La quantité d’éléments terminés sur une période","Le nombre de tâches commencées uniquement","Le temps d’une réunion","Le nombre de colonnes"],
+["Une équipe veut améliorer son système Kanban. Quelle approche est la plus robuste ?","Mesurer, identifier une contrainte, expérimenter et inspecter le résultat","Tout changer simultanément","Augmenter systématiquement le WIP","Supprimer les politiques"],
+["Pourquoi définir une classe de service ?","Pour expliciter des règles de traitement selon la nature des demandes","Pour attribuer un manager à chaque tâche","Pour remplacer le Product Backlog","Pour éviter toute priorisation"],
+["Quel signe montre un mauvais flux ?","Beaucoup de travail commencé mais peu de travail terminé","Un débit stable","Des politiques explicites","Des blocages visibles"],
+["Que cherche notamment à éviter un WIP excessif ?","Le multitâche et l’accumulation de travail partiellement terminé","La collaboration","La visualisation","La mesure du cycle time"],
+["Une équipe termine rapidement les tâches mais accumule des demandes urgentes. Que faut-il examiner ?","Les politiques de priorisation et les classes de service","La couleur du tableau uniquement","La durée des réunions","Le nombre de bureaux"],
+["Une bonne métrique Kanban doit surtout…","Aider à comprendre et améliorer le système de travail","Servir uniquement à évaluer les personnes","Remplacer les décisions","Être la plus complexe possible"],
+["L’amélioration continue en Kanban implique…","Des changements évolutifs guidés par l’observation du système","Une transformation unique et définitive","L’absence de mesure","Des changements imposés sans retour"],
+["Un manager demande d’ouvrir plus de tickets pour occuper tout le monde. Quelle réponse est la plus Agile ?","Examiner l’effet du WIP sur le flux et la valeur plutôt que maximiser l’occupation","Accepter automatiquement","Supprimer les limites WIP","Créer deux tableaux"],
+["Quel signe indique une organisation mature en Kanban ?","Les décisions d’amélioration s’appuient sur des données et l’observation du flux","Le tableau est très coloré","Toutes les tâches ont la même priorité","Aucun élément n’est jamais bloqué"] ],
+lean:[
+["Quel est le principe central du Lean Startup ?","Apprendre rapidement à partir d’expérimentations validées par des données","Écrire un plan produit définitif","Développer toutes les fonctionnalités avant de tester","Éviter les retours utilisateurs"],
+["Que cherche à tester une hypothèse ?","Une croyance importante sur le produit, le client ou le marché","La disponibilité des salles","Le nombre de réunions","La structure hiérarchique"],
+["MVP signifie…","Minimum Viable Product","Maximum Value Plan","Market Validation Process","Minimum Visual Prototype"],
+["Le MVP sert principalement à…","Apprendre avec un minimum d’effort avant d’investir davantage","Livrer le produit final","Réduire définitivement les coûts","Éviter toute expérimentation"],
+["La boucle Build-Measure-Learn consiste à…","Construire, mesurer puis apprendre pour orienter la suite","Planifier, recruter, vendre","Coder, documenter, archiver","Budgeter, produire, contrôler"],
+["Une métrique actionnable est une métrique qui…","Permet de prendre une décision ou de tester une hypothèse","Augmente toujours avec le temps","Est forcément financière","Est uniquement esthétique"],
+["Un vanity metric est problématique parce qu’elle…","Peut donner une impression de progrès sans aider réellement à décider","Est toujours fausse","Est toujours financière","Ne peut jamais être mesurée"],
+["Quand un test invalide une hypothèse importante, une réponse Lean Startup est…","Apprendre de l’échec et adapter l’hypothèse, l’offre ou le produit","Masquer le résultat","Augmenter le budget sans analyse","Ignorer les utilisateurs"],
+["Un pivot correspond à…","Un changement significatif de stratégie fondé sur l’apprentissage","Une simple correction de faute","La fin automatique du produit","Un changement de logo"],
+["Pourquoi tester tôt ?","Pour réduire le risque d’investir fortement dans une solution non validée","Pour supprimer la stratégie","Pour accélérer la documentation","Pour éviter toute mesure"],
+["Quel élément doit idéalement être mesurable dans une expérimentation ?","Un critère permettant de confirmer ou d’infirmer l’hypothèse","La couleur de l’interface","Le nombre de pages du rapport","Le nombre de réunions"],
+["Une équipe développe six mois sans parler aux utilisateurs. Quel risque est élevé ?","Construire une solution qui ne répond pas au problème réel","Mesurer trop de données","Apprendre trop vite","Pivoter trop souvent"],
+["Une bonne expérimentation Lean Startup doit…","Isoler une hypothèse importante et définir comment son résultat influencera la décision","Chercher à confirmer l’idée à tout prix","Éviter les critères de succès","Tester toutes les hypothèses simultanément"],
+["Product-market fit signifie principalement…","Une adéquation forte entre une solution et un besoin de marché","Un produit techniquement parfait","Un budget marketing élevé","Une équipe très grande"],
+["Une équipe constate beaucoup d’inscriptions mais peu d’utilisation réelle. Que faut-il examiner ?","L’activation et la valeur réellement obtenue par les utilisateurs","Uniquement le nombre d’inscriptions","Le logo","Le nombre de développeurs"],
+["Quelle attitude est mature en Lean Startup ?","Chercher des preuves plutôt que défendre une intuition","Défendre l’idée initiale","Ignorer les données contradictoires","Confondre opinion et preuve"],
+["Avant de développer une fonctionnalité coûteuse, il est pertinent de…","Tester l’hypothèse de valeur avec une expérimentation adaptée","La développer entièrement","Recruter une équipe supplémentaire","Écrire 100 pages de spécifications"],
+["Une métrique augmente mais la satisfaction utilisateur baisse. Quelle réaction est la plus pertinente ?","Analyser le compromis et vérifier si la métrique mesure réellement la valeur","Conclure automatiquement au succès","Supprimer les retours","Augmenter encore la métrique"],
+["Quel signe montre une maturité Lean Startup ?","Les investissements sont progressivement guidés par l’apprentissage validé","Les décisions reposent uniquement sur le rang hiérarchique","Les hypothèses restent implicites","Les expérimentations servent uniquement au marketing"],
+["Après une expérimentation, l’équipe doit surtout…","Transformer le résultat en apprentissage et décision suivante","Archiver le résultat sans action","Changer toute l’équipe","Arrêter toute mesure"] ],
+agile:[
+["Que cherche d’abord une démarche Agile ?","Créer de la valeur et s’adapter aux changements grâce à des boucles de feedback","Produire le plus de documents possible","Éviter les changements","Optimiser uniquement l’occupation"],
+["Une équipe mature implique régulièrement les parties prenantes pour…","Obtenir du feedback et ajuster la direction","Faire valider chaque micro-tâche","Remplacer l’équipe","Éviter les décisions"],
+["Une équipe mesure beaucoup d’activité mais peu de résultats. Quel problème peut exister ?","Une confusion entre activité et valeur","Une absence de documentation","Un excès de feedback","Un manque de réunions"],
+["L’amélioration continue consiste à…","Apprendre du fonctionnement réel et améliorer progressivement le système","Changer tout chaque semaine","Suivre toujours la même méthode","Éviter les expérimentations"],
+["Une équipe Agile mature face à une nouvelle information…","Évalue son impact et adapte son plan si nécessaire","Refuse le changement","Attend systématiquement la fin du projet","Supprime les priorités"],
+["Quel comportement favorise l’autonomie ?","Donner à l’équipe un objectif clair et de l’espace pour décider du comment","Attribuer chaque tâche individuellement","Contrôler chaque étape","Centraliser toutes les décisions"],
+["Pourquoi privilégier des boucles courtes de feedback ?","Pour réduire le délai entre action, observation et adaptation","Pour augmenter le nombre de réunions","Pour supprimer la stratégie","Pour produire plus de documents"],
+["Une équipe termine beaucoup de tâches mais les utilisateurs sont insatisfaits. Première question ?","La valeur livrée répond-elle réellement au besoin ?","Pourquoi ne travaille-t-elle pas plus ?","Pourquoi n’y a-t-il pas plus de tickets ?","Pourquoi le tableau n’est-il pas plus grand ?"],
+["Une culture Agile saine favorise…","La transparence, l’apprentissage et la responsabilité collective","La recherche de coupables","Le reporting permanent","La compétition individuelle"],
+["Une organisation veut devenir Agile en ajoutant seulement des cérémonies. Risque principal ?","Adopter des pratiques visibles sans changer les comportements ni le système","Trop apprendre","Livrer trop de valeur","Avoir trop de feedback"],
+["Quel indicateur est le plus proche de la valeur ?","Un résultat utilisateur ou métier observé","Le nombre de tickets ouverts","Le nombre de réunions","Le nombre d’heures saisies"],
+["Une équipe découvre une hypothèse fausse. Une culture d’apprentissage devrait…","Utiliser cette information pour ajuster la décision","Chercher à cacher l’erreur","Punir la personne","Ignorer la donnée"],
+["Quel comportement améliore la collaboration ?","Partager rapidement l’information et résoudre collectivement les obstacles","Créer des silos","Limiter les échanges","Centraliser les connaissances"],
+["Une roadmap Agile mature est plutôt…","Une orientation adaptable qu’un contrat figé","Un calendrier immuable","Une liste de tâches techniques","Un engagement sans hypothèses"],
+["Quel signe indique une faible maturité Agile ?","Les équipes optimisent leurs tâches locales sans regarder le résultat global","Les équipes inspectent leurs résultats","Les parties prenantes donnent du feedback","Les décisions sont réévaluées"],
+["Pourquoi expérimenter ?","Pour apprendre avec un risque maîtrisé avant de généraliser une décision","Pour éviter toute décision","Pour remplacer la stratégie","Pour produire plus de reporting"],
+["Une équipe dépend constamment d’une validation externe pour chaque décision. Axe prioritaire ?","Clarifier le cadre d’autonomie et les responsabilités","Ajouter une réunion quotidienne","Augmenter le nombre de tickets","Supprimer les objectifs"],
+["Quel comportement reflète une vraie orientation client ?","Observer l’usage et les résultats plutôt que supposer les besoins","Livrer uniquement ce qui était prévu","Éviter les utilisateurs","Mesurer seulement la production"],
+["Une organisation mature cherche à optimiser…","Le système de création de valeur, pas seulement chaque équipe isolée","Uniquement l’occupation individuelle","Le nombre de réunions","La quantité de documentation"],
+["Après une amélioration, il faut idéalement…","Observer les résultats pour vérifier si le changement produit l’effet attendu","Considérer l’amélioration comme définitive","Arrêter les mesures","Changer immédiatement autre chose"]]
+};
+
+let state={type:null,qs:[],i:0,score:0,answered:false};
+
+function startQuiz(type){
+ state={type,qs:bank[type],i:0,score:0,answered:false};
+ const names={scrum:"Diagnostic Scrum",kanban:"Diagnostic Kanban",lean:"Diagnostic Lean Startup",agile:"Diagnostic Agile global"};
+ document.getElementById("quizApp").style.display="block";
+ document.getElementById("quizName").textContent=names[type];
+ document.getElementById("result").style.display="none";
+ document.getElementById("questionArea").style.display="block";
+ render();
+ document.getElementById("quizApp").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function render(){
+ const q=state.qs[state.i]; state.answered=false;
+ document.getElementById("counter").textContent=`Question ${state.i+1} / 20`;
+ document.getElementById("progressBar").style.width=((state.i)/20*100)+"%";
+ const opts=[q[1],q[2],q[3],q[4]].sort(()=>Math.random()-.5);
+ const area=document.getElementById("questionArea");
+ area.innerHTML=`<div class="qtext">${q[0]}</div><div class="opts">${opts.map((o,n)=>`<button class="opt" data-correct="${o===q[1]}" onclick="answer(this,${o===q[1]})">${String.fromCharCode(65+n)}. ${o}</button>`).join("")}</div><div id="feedback" class="feedback"></div>`;
+}
+function answer(btn,correct){
+ if(state.answered)return; state.answered=true;
+ document.querySelectorAll(".opt").forEach(x=>x.disabled=true);
+ btn.classList.add(correct?"correct":"wrong");
+ if(correct)state.score++;
+ const f=document.getElementById("feedback"); f.style.display="block";
+ f.textContent=correct?"Bonne réponse. Cette réponse correspond au principe évalué.":"Cette réponse ne correspond pas au principe évalué. Consultez l'explication pendant la correction finale.";
+ setTimeout(()=>{state.i++; state.i<20?render():finish()},700);
+}
+function finish(){
+ document.getElementById("progressBar").style.width="100%";
+ document.getElementById("questionArea").style.display="none";
+ const pct=state.score*5;
+ let level,desc,rec;
+ if(pct<50){level="Débutant";desc="Les fondamentaux sont encore à consolider.";rec="Commencer par la formation fondamentale correspondante."}
+ else if(pct<70){level="En progression";desc="Les principes sont connus mais leur application reste partielle.";rec="Renforcer les pratiques par une formation opérationnelle."}
+ else if(pct<85){level="Intermédiaire";desc="Les pratiques sont globalement maîtrisées, avec des axes d'amélioration.";rec="Approfondir les pratiques et l'amélioration continue."}
+ else{level="Avancé";desc="Bonne maîtrise des principes et pratiques évalués.";rec="Passer à un parcours avancé ou à un accompagnement d'équipe."}
+ const names={scrum:"Scrum",kanban:"Kanban",lean:"Lean Startup",agile:"Agile global"};
+ document.getElementById("result").style.display="block";
+ document.getElementById("result").innerHTML=`<span class="tag">Résultat</span><div class="resultScore">${pct}<span style="font-size:22px;color:var(--muted)">/100</span></div><h2>${level}</h2><p style="color:var(--muted)">${desc}</p><div class="recommend"><strong style="color:var(--cyan)">Recommandation</strong><p>${rec}</p><strong>Parcours : ${names[state.type]}</strong></div><div class="resultActions"><a class="btn" href="#contact">Demander un parcours</a><button class="btn ghost" onclick="startQuiz('${state.type}')">Refaire le diagnostic</button></div>`;
+}
+</script>
+</body>
+</html>
