@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agile.tips V5 — Formations Scrum, Kanban & Lean Startup · by Twagirumukiza</title>
+<meta name="description" content="Agile.tips by Twagirumukiza — Formations pratiques Scrum, Kanban, Lean Startup, diagnostics de maturité et accompagnement Agile.">
+<style>
+:root{
+--bg:#f6f8fb;--bg2:#eef2f8;--card:#ffffff;--card2:#f2f5f9;--text:#101c2c;--muted:#5b6b80;--line:#e1e7ef;
+--navy:#0f2a4d;--blue:#1d4ed8;--blue2:#3b82f6;--gold:#a97c1f;--green:#1f8a4c;--red:#c2483f;--font-scale:1
+}
+body.dark{
+--bg:#0a1930;--bg2:#0a1930;--card:#102544;--card2:#132c52;--text:#eef2f8;--muted:#93a4bc;--line:#22395c;
+--navy:#eef2f8;--blue:#4d8dff;--blue2:#6ea8ff;--gold:#d8b45c;--green:#37b06a;--red:#e0685f
+}
+html{font-size:calc(16px * var(--font-scale));scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1180px;margin:auto;padding:0 24px}
+nav{height:76px;display:flex;align-items:center;position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--line)}
+.navin{width:100%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:800;letter-spacing:-.01em;font-size:21px;color:var(--navy)}
+.logo b{color:var(--blue)}
+.links{display:flex;gap:26px;color:var(--muted);font-size:14px;font-weight:600}
+.links a:hover{color:var(--blue)}
+.burger{display:none;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid var(--line);border-radius:6px;background:var(--card2);color:var(--navy);cursor:pointer;font-size:22px;line-height:1}
+.burger:hover{border-color:var(--blue)}
+.mobile-menu{display:none;position:absolute;top:76px;left:12px;right:12px;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--card);box-shadow:0 14px 34px rgba(15,42,77,.14)}
+.mobile-menu.open{display:grid}
+.mobile-menu a{padding:13px 14px;color:var(--text);text-decoration:none;border-radius:6px;font-weight:600;font-size:15px}
+.mobile-menu a:hover{background:var(--card2);color:var(--blue)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:6px;padding:12px 20px;font-weight:700;font-size:14px;cursor:pointer;background:var(--blue);color:#fff}
+.btn:hover{background:var(--navy)}
+.ghost{background:transparent;color:var(--navy);border:1px solid var(--line)}
+.ghost:hover{border-color:var(--blue);color:var(--blue)}
+body.dark .ghost{color:var(--text)}
+.hero{padding:80px 0 64px;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.eyebrow{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:6px 12px;background:var(--card2);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--blue)}
+.tag{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--blue)}
+h1{font-size:clamp(38px,4.6vw,56px);line-height:1.08;letter-spacing:-.02em;margin:22px 0;font-weight:800;color:var(--navy)}
+.grad{color:var(--blue)}
+.lead{font-size:18px;color:var(--muted);max-width:640px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:28px;box-shadow:0 8px 30px rgba(15,42,77,.08)}
+.score{font-size:52px;font-weight:800;color:var(--navy)}
+.meter{height:8px;background:var(--card2);border-radius:99px;overflow:hidden}
+.meter i{display:block;height:100%;width:78%;background:var(--blue)}
+section{padding:64px 0}
+.title{max-width:760px;margin-bottom:32px}
+.title h2{font-size:32px;letter-spacing:-.015em;margin:8px 0;color:var(--navy);font-weight:800}
+.title p{color:var(--muted);font-size:16px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{padding:26px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.card h3{font-size:22px;margin:8px 0;color:var(--navy)}
+.card p{color:var(--muted)}
+.price{font-size:20px;font-weight:800;margin:16px 0;color:var(--navy)}
+.quizcards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.quizcard{padding:22px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.quizcard h3{margin:8px 0;color:var(--navy)}
+.quizcard p{font-size:14px;color:var(--muted);min-height:60px}
+.appointment{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.calbox{padding:28px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.calbox h3{font-size:24px;margin:8px 0;color:var(--navy)}
+.calbox p{color:var(--muted)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.step{padding:20px;border-left:3px solid var(--blue);border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--card);border-radius:0 8px 8px 0}
+.step b{color:var(--blue);display:block;font-size:13px;letter-spacing:.05em}
+.step strong{color:var(--navy)}
+.step p{color:var(--muted)}
+.cta{display:flex;justify-content:space-between;gap:30px;align-items:center;padding:44px;border-radius:12px;background:var(--navy);color:#fff}
+.cta h2{font-size:30px;margin:0;color:#fff}
+.cta p{color:#cbd8ec;max-width:640px}
+body.dark .cta{background:var(--card2)}
+footer{padding:32px 0;color:var(--muted);border-top:1px solid var(--line);font-size:13px}
+.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;margin-top:26px}
+.about-main h3{font-size:24px;letter-spacing:-.01em;color:var(--navy)}
+.about-main p{color:var(--muted);font-size:16px}
+.value-list{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:16px}
+.value-list li{padding:14px 0;border-bottom:1px solid var(--line)}
+.value-list li:last-child{border-bottom:0}
+.value-list span{color:var(--muted);font-size:14px}
+.credentials{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+.credentials>div{padding:18px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.credentials b{display:block;color:var(--blue);font-size:18px;margin-bottom:5px}
+.credentials span{color:var(--muted);font-size:13px}
+.signature{margin-top:9px;color:var(--blue);font-weight:700}
+.catalogue-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:26px}
+.catalogue-card{padding:28px;border:1px solid var(--line);border-radius:10px;background:var(--card);display:flex;flex-direction:column;min-height:100%}
+.catalogue-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.catalogue-number{font-size:13px;font-weight:800;color:var(--blue);letter-spacing:.06em}
+.catalogue-card h3{font-size:22px;letter-spacing:-.01em;margin:16px 0 8px;color:var(--navy)}
+.catalogue-card p{color:var(--muted)}
+.catalogue-card ul{padding-left:18px;color:var(--text);display:grid;gap:9px;margin:16px 0 20px;font-size:14.5px}
+.catalogue-card li::marker{color:var(--blue)}
+.catalogue-foot{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);color:var(--navy);font-size:13px;font-weight:700}
+.catalogue-bottom{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:20px}
+.catalogue-context{padding:26px;border:1px solid var(--line);border-radius:10px;background:var(--card2)}
+.catalogue-context h3{font-size:19px;margin:8px 0;color:var(--navy)}
+.catalogue-context p{color:var(--muted);margin-bottom:18px}
+@media(max-width:900px){.catalogue-grid,.catalogue-bottom{grid-template-columns:1fr}}
+@media(max-width:1100px){.links{display:none}.burger{display:flex}}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.quizcards{grid-template-columns:1fr 1fr}.appointment{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.about-grid{grid-template-columns:1fr}.credentials{grid-template-columns:1fr}}
+@media(max-width:560px){.quizcards,.steps{grid-template-columns:1fr}h1{font-size:36px}.cta{flex-direction:column;align-items:flex-start}}
+.controls{display:flex;align-items:center;gap:7px;margin-left:14px}
+.ctrl{border:1px solid var(--line);background:transparent;color:var(--text);border-radius:6px;padding:8px 10px;font-weight:700;cursor:pointer;font-size:12px}
+.ctrl:hover{border-color:var(--blue);color:var(--blue)}
+.lang-active{background:var(--blue);color:#fff;border-color:var(--blue)}
+@media(max-width:900px){.controls{margin-left:0}.ctrl{padding:7px 8px}}
+.method-visual{padding:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.method-visual img{width:100%;height:auto;display:block;border-radius:6px;object-fit:cover}
+.ctrl.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+body.font-large .lead,body.font-large .card p,body.font-large .quizcard p,body.font-large .catalogue-card p,body.font-large .catalogue-card li,body.font-large .catalogue-context p,body.font-large .about-main p,body.font-large .value-list span,body.font-large .calbox p,body.font-large .step p{font-size:1.08em}
+body.font-large .btn,body.font-large .ctrl{font-size:1.03em}
+.footer-link{background:none;border:0;color:inherit;text-decoration:underline;cursor:pointer;font:inherit;padding:0 2px}
+.footer-link:hover{opacity:.75}
+.legal-overlay{position:fixed;inset:0;background:rgba(10,20,35,.55);z-index:9999;display:none;align-items:center;justify-content:center;padding:24px}
+.legal-modal{max-width:900px;max-height:88vh;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:32px;box-shadow:0 24px 70px rgba(15,42,77,.25);position:relative;color:var(--text)}
+.legal-close{position:absolute;right:18px;top:14px;background:none;border:0;color:var(--muted);font-size:26px;cursor:pointer}
+.legal-close:hover{color:var(--navy)}
+.legal-modal h2{margin-top:0;color:var(--navy)}
+.legal-modal h3{margin-top:24px;color:var(--navy)}
+.legal-modal p,.legal-modal li{line-height:1.65;color:var(--text)}
+.legal-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px 0}
+.legal-meta div{padding:14px;border:1px solid var(--line);border-radius:8px}
+.legal-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.legal-tabs button{padding:8px 14px;border-radius:6px;border:1px solid var(--line);background:transparent;color:var(--text);cursor:pointer;font-size:13px;font-weight:600}
+.legal-tabs button.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.font-large{font-size:112%}
+.font-normal{font-size:100%}
+.ctrl[disabled]{opacity:.42;cursor:not-allowed}
+.font-status{min-width:52px;text-align:center}
+.font-large h1{font-size:clamp(3rem,6vw,5.4rem)}
+@media(max-width:650px){.legal-meta{grid-template-columns:1fr}.legal-modal{padding:22px}}
+</style>
+
+<style>
+#diagnosticApp{display:none;margin-top:24px;padding:30px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.diag-head{display:flex;justify-content:space-between;gap:20px;align-items:center}
+.diag-head h3{font-size:22px;margin:6px 0;color:var(--navy)}
+.diag-progress{height:6px;background:var(--card2);border-radius:99px;margin:20px 0}
+.diag-progress i{display:block;height:100%;width:0;background:var(--blue);border-radius:99px}
+.diag-q{font-size:21px;font-weight:700;line-height:1.35;margin:26px 0;color:var(--navy)}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.scale button{border:1px solid var(--line);background:var(--card2);color:var(--text);border-radius:8px;padding:16px 8px;cursor:pointer}
+.scale button:hover{border-color:var(--blue)}
+.scale b{display:block;font-size:22px;color:var(--navy)}
+.scale small{color:var(--muted)}
+.result{text-align:center}
+.bigscore{font-size:64px;font-weight:800;line-height:1;margin:18px;color:var(--navy)}
+.bigscore small{font-size:20px;color:var(--muted)}
+.dimensions{max-width:720px;margin:24px auto;text-align:left;display:grid;gap:12px}
+.dimensions>div{background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:12px}
+.dimensions span{display:inline-block}
+.dimensions b{float:right;color:var(--navy)}
+.dimbar{height:6px;background:var(--card);border-radius:99px;margin-top:8px;overflow:hidden}
+.dimbar i{display:block;height:100%;background:var(--blue)}
+.result-box{max-width:650px;margin:20px auto;padding:18px;border:1px solid var(--line);border-radius:10px;background:var(--card2)}
+.center{justify-content:center}
+.knowledge-head{display:flex;justify-content:space-between;gap:20px;align-items:center}
+.knowledge-head h3{font-size:22px;margin:6px 0;color:var(--navy)}
+.knowledge-progress{height:6px;background:var(--card2);border-radius:99px;margin:20px 0}
+.knowledge-progress i{display:block;height:100%;width:0;background:var(--blue);border-radius:99px}
+.knowledge-q{font-size:21px;font-weight:700;line-height:1.35;margin:26px 0;color:var(--navy)}
+.answers{display:grid;gap:10px}
+.answer{border:1px solid var(--line);background:var(--card2);color:var(--text);border-radius:8px;padding:16px;text-align:left;cursor:pointer;font-size:15px}
+.answer:hover{border-color:var(--blue)}
+.answer.correct{border-color:var(--green);background:rgba(31,138,76,.08)}
+.answer.wrong{border-color:var(--red);background:rgba(194,72,63,.08)}
+.explain{margin-top:18px;padding:16px;border:1px solid var(--line);border-radius:8px;background:var(--card2)}
+.badge{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--blue);border-radius:6px;padding:8px 14px;color:var(--blue);font-weight:700}
+.quiz-score{font-size:64px;font-weight:800;line-height:1;margin:18px;color:var(--navy)}
+.quiz-score small{font-size:20px;color:var(--muted)}
+@media(max-width:600px){.scale{grid-template-columns:1fr}.diag-q{font-size:19px}}
+</style>
+</head>
+<body>
+<nav><div class="wrap navin"><a class="logo" href="#">agile<b>.tips</b></a><div class="links"><a href="#catalogue" data-i18n="nav_catalogue">Catalogue</a><a href="#diagnostic" data-i18n="nav_diagnostic">Diagnostic</a><a href="#knowledge" data-i18n="nav_quiz">Quiz</a><a href="#rdv" data-i18n="nav_rdv">Prendre RDV</a><a href="#methode" data-i18n="nav_method">Méthode</a><a href="#apropos" data-i18n="nav_about">Qui suis-je ?</a></div><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end"><div class="controls"><button class="ctrl lang-active" id="frBtn" onclick="setLang('fr')">FR</button><button class="ctrl" id="enBtn" onclick="setLang('en')">EN</button><button class="ctrl" id="themeBtn" onclick="toggleTheme()">☀︎/☾</button><button class="ctrl" id="fontMinus" onclick="setFontSize('normal')" aria-label="Réduire la taille des caractères">A−</button><button class="ctrl" id="fontPlus" onclick="setFontSize('large')" aria-label="Augmenter la taille des caractères">A+</button></div><a class="btn" href="https://cal.com/innocent-twagirumukiza/agile-formation" target="_blank" rel="noopener" data-i18n="nav_book">30 min avec moi</a><a class="ctrl" href="https://www.linkedin.com/in/innocent-twagirumukiza/" target="_blank" rel="noopener" aria-label="LinkedIn">in LinkedIn</a><button class="burger" id="burgerBtn" onclick="toggleMobileMenu()" aria-label="Ouvrir le menu" aria-expanded="false">☰</button></div></div><div class="mobile-menu" id="mobileMenu"><a href="#catalogue" data-i18n="nav_catalogue" onclick="closeMobileMenu()">Catalogue</a><a href="#diagnostic" data-i18n="nav_diagnostic" onclick="closeMobileMenu()">Diagnostic</a><a href="#knowledge" data-i18n="nav_quiz" onclick="closeMobileMenu()">Quiz</a><a href="#rdv" data-i18n="nav_rdv" onclick="closeMobileMenu()">Prendre RDV</a><a href="#methode" data-i18n="nav_method" onclick="closeMobileMenu()">Méthode</a><a href="#apropos" data-i18n="nav_about" onclick="closeMobileMenu()">Qui suis-je ?</a></div></nav>
+
+<section class="hero wrap">
+<div><span class="eyebrow">Agile • Scrum • Kanban • Lean Startup</span><h1><span data-i18n="hero_title">Les bons <span class="grad">tips Agile</span> pour passer à l’action.</span></h1><p class="lead"><span data-i18n="hero_lead">Formations pratiques, diagnostics de maturité et accompagnement pour aider les équipes à mieux créer de la valeur, collaborer et s’adapter.</span></p><div class="actions"><a class="btn" href="#formations"><span data-i18n="see_training">Voir les formations</span></a><a class="btn ghost" href="#diagnostic"><span data-i18n="assess">Évaluer ma maturité</span></a></div><p style="color:var(--muted);font-size:13px"><span data-i18n="hero_meta">Conseil • Formation • Diagnostic • Ateliers • by Twagirumukiza</span></p></div>
+<div class="panel method-visual"><img src="assets/methodes-agile.png" alt="Scrum, Kanban and Lean Startup" data-i18n-alt="methods_image_alt"></div>
+</section>
+
+<section id="formations"><div class="wrap"><div class="title"><span class="tag" data-i18n="formations_tag">Formations</span><h2><span data-i18n="training_title">Apprendre l’Agile sans rester dans la théorie.</span></h2><p><span data-i18n="training_lead">Des parcours orientés pratique, avec cas professionnels, ateliers et mises en situation.</span></p></div><div class="grid">
+<article class="card"><span class="tag">01 · Scrum</span><h3>Scrum</h3><p><span data-i18n="scrum_desc">Maîtriser le framework, les responsabilités, les événements, les artefacts, la valeur et l’empirisme.</span></p><div class="price" data-i18n="on_quote">Sur devis</div><a class="btn ghost" href="#rdv" data-i18n="talk_training">En parler</a></article>
+<article class="card"><span class="tag">02 · Kanban</span><h3>Kanban</h3><p><span data-i18n="kanban_desc">Visualiser le flux, limiter le WIP, réduire les blocages et améliorer le système de travail.</span></p><div class="price" data-i18n="on_quote">Sur devis</div><a class="btn ghost" href="#rdv" data-i18n="talk_training">En parler</a></article>
+<article class="card"><span class="tag">03 · Lean Startup</span><h3>Lean Startup</h3><p><span data-i18n="lean_desc">Tester les hypothèses, expérimenter, mesurer l’apprentissage et décider avec moins de risque.</span></p><div class="price" data-i18n="on_quote">Sur devis</div><a class="btn ghost" href="#rdv" data-i18n="talk_training">En parler</a></article>
+</div></div></section>
+
+
+<section id="catalogue">
+  <div class="wrap">
+    <div class="title">
+      <span class="tag" data-i18n="catalogue_tag">Catalogue de formations</span>
+      <h2 data-i18n="catalogue_title">Des formations Agile conçues pour apprendre, pratiquer et transformer les pratiques.</h2>
+      <p data-i18n="catalogue_lead">Des programmes sur-mesure pour entreprises, écoles supérieures et centres de formation, avec une forte place donnée aux ateliers et à la mise en situation.</p>
+    </div>
+    <div class="catalogue-grid">
+      <article class="catalogue-card">
+        <div class="catalogue-top"><span class="catalogue-number">01</span><span class="tag" data-i18n="cat_scrum_duration">2 jours · 14h</span></div>
+        <h3 data-i18n="cat_scrum_title">Maîtriser le cadre Scrum</h3>
+        <p data-i18n="cat_scrum_goal">Comprendre et appliquer Scrum pour structurer une équipe, cadencer les livraisons et maximiser la valeur perçue par les utilisateurs.</p>
+        <ul>
+          <li data-i18n="cat_scrum_1">Fondations et mindset Agile : Manifeste Agile, incertitude et comparaison avec le Cycle en V.</li>
+          <li data-i18n="cat_scrum_2">Piliers et responsabilités : Transparence, Inspection, Adaptation, Product Owner, Scrum Master et Équipe.</li>
+          <li data-i18n="cat_scrum_3">Artefacts : Product Backlog, Sprint Backlog et Definition of Done.</li>
+          <li data-i18n="cat_scrum_4">Événements : Sprint Planning, Daily Scrum, Sprint Review et Rétrospective.</li>
+          <li data-i18n="cat_scrum_5">Atelier : simulation complète d’un projet Scrum de bout en bout.</li>
+        </ul>
+        <div class="catalogue-foot"><span data-i18n="cat_scrum_audience">Public : étudiants tech, équipes développement, chefs de projet</span></div>
+      </article>
+
+      <article class="catalogue-card">
+        <div class="catalogue-top"><span class="catalogue-number">02</span><span class="tag" data-i18n="cat_kanban_duration">1 jour · 7h</span></div>
+        <h3 data-i18n="cat_kanban_title">Optimiser son flux avec Kanban</h3>
+        <p data-i18n="cat_kanban_goal">Mettre en place un système Kanban pour fluidifier l’activité quotidienne, stopper le multitâche et améliorer l’efficacité collective.</p>
+        <ul>
+          <li data-i18n="cat_kanban_1">Principes et origines : comprendre le flux et l’approche incrémentale.</li>
+          <li data-i18n="cat_kanban_2">Conception du tableau : colonnes, cartes, files d’attente et règles de passage.</li>
+          <li data-i18n="cat_kanban_3">WIP : limiter le travail en cours pour désengorger le système.</li>
+          <li data-i18n="cat_kanban_4">Métriques : Lead Time, Cycle Time et Throughput.</li>
+          <li data-i18n="cat_kanban_5">Amélioration continue : revues de flux et identification des blocages.</li>
+        </ul>
+        <div class="catalogue-foot"><span data-i18n="cat_kanban_audience">Public : équipes transverses, Ops, RH, Support</span></div>
+      </article>
+
+      <article class="catalogue-card">
+        <div class="catalogue-top"><span class="catalogue-number">03</span><span class="tag" data-i18n="cat_lean_duration">2 jours · 14h</span></div>
+        <h3 data-i18n="cat_lean_title">Innover avec le Lean Startup</h3>
+        <p data-i18n="cat_lean_goal">Sécuriser le lancement d’un nouveau produit, service ou projet grâce à une démarche de test, mesure et apprentissage rapide.</p>
+        <ul>
+          <li data-i18n="cat_lean_1">Incertitude et innovation : cycle Build-Measure-Learn.</li>
+          <li data-i18n="cat_lean_2">Hypothèses et MVP : cartographie des risques et conception du Minimum Viable Product.</li>
+          <li data-i18n="cat_lean_3">Expérimentation et mesure : métriques actionnables et plan de test utilisateur.</li>
+          <li data-i18n="cat_lean_4">Pivot : analyser les apprentissages et décider de pivoter ou persévérer.</li>
+          <li data-i18n="cat_lean_5">Atelier : pitch et test grandeur nature d’un projet d’innovation.</li>
+        </ul>
+        <div class="catalogue-foot"><span data-i18n="cat_lean_audience">Public : étudiants en entrepreneuriat, porteurs de projets</span></div>
+      </article>
+    </div>
+
+    <div class="catalogue-bottom">
+      <div class="catalogue-context">
+        <span class="tag" data-i18n="catalogue_for">Pour qui ?</span>
+        <h3 data-i18n="catalogue_for_title">Entreprises, écoles et organismes de formation</h3>
+        <p data-i18n="catalogue_for_text">Interventions en intra ou inter-entreprise, cours, TD, ateliers projets et jurys de soutenance pour des cycles Bachelor, Master ou formation continue.</p>
+      </div>
+      <div class="catalogue-context">
+        <span class="tag" data-i18n="catalogue_format">Formats</span>
+        <h3 data-i18n="catalogue_format_title">Présentiel ou distanciel, avec livrables</h3>
+        <p data-i18n="catalogue_format_text">Les contenus peuvent être adaptés au contexte, au public et aux objectifs. Les interventions font l’objet d’une proposition sur-mesure.</p>
+      </div>
+      <div class="catalogue-context">
+        <span class="tag" data-i18n="catalogue_quote">Sur devis</span>
+        <h3 data-i18n="catalogue_quote_title">Construisons le bon parcours</h3>
+        <p data-i18n="catalogue_quote_text">Tarification adaptée au format, à l’effectif et au niveau de personnalisation. Proposition sur-mesure sous 48h.</p>
+        <a class="btn" href="https://cal.com/innocent-twagirumukiza/agile-formation" target="_blank" rel="noopener" data-i18n="catalogue_cta">Échanger sur une formation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="diagnostic"><div class="wrap"><div class="title"><span class="tag" data-i18n="free_assessment">Diagnostic gratuit</span><h2><span data-i18n="diag_title">Évaluez votre maturité Agile en 20 questions.</span></h2><p><span data-i18n="diag_lead">Un diagnostic par méthode pour identifier vos forces, vos axes de progression et le parcours de formation adapté.</span></p></div>
+<div class="quizcards">
+<div class="quizcard"><span class="tag" data-i18n="twenty_questions">20 questions</span><h3>Scrum</h3><p data-i18n="diag_scrum_desc">Fondamentaux, pratiques, situations et amélioration continue.</p><a class="btn" href="#diagnosticApp" onclick="openDiagnostic('scrum');return false;" data-i18n="start_assessment">Commencer le diagnostic</a></div>
+<div class="quizcard"><span class="tag" data-i18n="twenty_questions">20 questions</span><h3>Kanban</h3><p data-i18n="diag_kanban_desc">Flux, WIP, politiques, métriques et amélioration.</p><a class="btn" href="#diagnosticApp" onclick="openDiagnostic('kanban');return false;" data-i18n="start_assessment">Commencer le diagnostic</a></div>
+<div class="quizcard"><span class="tag" data-i18n="twenty_questions">20 questions</span><h3>Lean Startup</h3><p data-i18n="diag_lean_desc">Hypothèses, MVP, expérimentation, métriques et pivot.</p><a class="btn" href="#diagnosticApp" onclick="openDiagnostic('lean');return false;" data-i18n="start_assessment">Commencer le diagnostic</a></div>
+<div class="quizcard"><span class="tag" data-i18n="twenty_questions">20 questions</span><h3>Agile global</h3><p data-i18n="diag_agile_desc">Valeur, collaboration, adaptation, culture et apprentissage.</p><a class="btn" href="#diagnosticApp" onclick="openDiagnostic('agile');return false;" data-i18n="start_assessment">Commencer le diagnostic</a></div>
+</div><div id="diagnosticApp"></div></div></section>
+
+
+<section id="knowledge"><div class="wrap"><div class="title"><span class="tag" data-i18n="quiz_tag">Quiz pédagogiques</span><h2><span data-i18n="quiz_title">Testez vos connaissances Agile en 20 QCM.</span></h2><p><span data-i18n="quiz_lead">Une seule bonne réponse, correction immédiate, explication pédagogique, score final et badge de réussite.</span></p></div><div class="quizcards">
+<div class="quizcard"><span class="tag" data-i18n="twenty_mcq">20 QCM</span><h3 data-i18n="quiz_scrum_title">Quiz Scrum</h3><p data-i18n="quiz_scrum_desc">Framework, rôles, événements, artefacts, valeur et empirisme.</p><a class="btn" href="#knowledgeApp" onclick="openKnowledge('scrum');return false;" data-i18n="start_quiz">Commencer le quiz</a></div>
+<div class="quizcard"><span class="tag" data-i18n="twenty_mcq">20 QCM</span><h3 data-i18n="quiz_kanban_title">Quiz Kanban</h3><p data-i18n="quiz_kanban_desc">Flux, WIP, métriques, politiques explicites et amélioration continue.</p><a class="btn" href="#knowledgeApp" onclick="openKnowledge('kanban');return false;" data-i18n="start_quiz">Commencer le quiz</a></div>
+<div class="quizcard"><span class="tag" data-i18n="twenty_mcq">20 QCM</span><h3 data-i18n="quiz_lean_title">Quiz Lean Startup</h3><p data-i18n="quiz_lean_desc">Hypothèses, MVP, expérimentation, pivot et métriques actionnables.</p><a class="btn" href="#knowledgeApp" onclick="openKnowledge('lean');return false;" data-i18n="start_quiz">Commencer le quiz</a></div>
+<div class="quizcard"><span class="tag" data-i18n="twenty_mcq">20 QCM</span><h3 data-i18n="quiz_agile_title">Quiz Agile global</h3><p data-i18n="quiz_agile_desc">Culture Agile, collaboration, valeur, feedback et adaptation.</p><a class="btn" href="#knowledgeApp" onclick="openKnowledge('agile');return false;" data-i18n="start_quiz">Commencer le quiz</a></div>
+</div><div id="knowledgeApp"></div></div></section>
+
+<section id="apropos"><div class="wrap">
+  <div class="title">
+    <span class="tag" data-i18n="about_tag">Qui suis-je ?</span>
+    <h2 data-i18n="about_title">Une approche Agile construite sur la pratique, la transmission et l’expérience terrain.</h2>
+    <p data-i18n="about_lead">Agile.tips est porté par Twagirumukiza, formateur et consultant indépendant, avec une approche orientée vers l’action : comprendre les méthodes, les expérimenter et les relier aux problématiques réelles des organisations.</p>
+  </div>
+
+  <div class="about-grid">
+    <div class="card about-main">
+      <span class="tag" data-i18n="about_path_tag">Mon parcours</span>
+      <h3 data-i18n="about_path_title">De la gestion de projet à la transmission des pratiques Agile</h3>
+      <p data-i18n="about_path_p1">En 2018, j’ai obtenu un <strong>certificat « Méthodes agiles de gestion et amorçage de projet »</strong>, après une formation de <strong>7 mois à Simplon.co</strong>. Cette formation a constitué une étape structurante dans mon parcours autour des méthodes Agile, de la gestion de projet et de l’apprentissage par la pratique.</p>
+      <p data-i18n="about_path_p2">Depuis, je mobilise ces approches dans mes activités de <strong>formation, d’accompagnement et de conseil</strong>, avec une attention particulière portée à la compréhension des enjeux métier, à la collaboration et à l’amélioration continue.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag" data-i18n="about_value_tag">Ce que j’apporte</span>
+      <ul class="value-list">
+        <li><strong data-i18n="value_practice_title">Pédagogie pratique</strong><br><span data-i18n="value_practice">Des concepts transformés en ateliers, cas concrets et situations professionnelles.</span></li>
+        <li><strong data-i18n="value_project_title">Culture projet</strong><br><span data-i18n="value_project">Une lecture centrée sur la valeur, les priorités, les risques, les parties prenantes et l’exécution.</span></li>
+        <li><strong data-i18n="value_cross_title">Regard transversal</strong><br><span data-i18n="value_cross">Une expérience de formation et de conseil également mobilisée sur la cybersécurité, la gouvernance, la conformité et la gestion des risques.</span></li>
+        <li><strong data-i18n="value_transfer_title">Transmission</strong><br><span data-i18n="value_transfer">Des contenus conçus pour rendre les apprenants et les équipes réellement autonomes.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="credentials">
+    <div><b>2018</b><span data-i18n="credential_cert">Certificat — Méthodes agiles de gestion et amorçage de projet</span></div>
+    <div><b>7 mois</b><span data-i18n="credential_training">Formation suivie à Simplon.co</span></div>
+    <div><b data-i18n="today">Aujourd’hui</b><span data-i18n="credential_today">Formation • Conseil • Accompagnement • Cybersécurité & GRC</span></div>
+  </div>
+</div></section>
+
+<section id="rdv"><div class="wrap"><div class="title"><span class="tag" data-i18n="rdv_tag">Prise de rendez-vous</span><h2><span data-i18n="rdv_title">Parlons de votre besoin Agile.</span></h2><p><span data-i18n="rdv_lead">Un échange de 30 minutes pour comprendre votre contexte, vos objectifs et voir quelle formation ou quel accompagnement est pertinent.</span></p></div>
+<div class="appointment"><div class="calbox"><span class="tag" data-i18n="thirty_minutes">30 minutes</span><h3 data-i18n="agile_training">Agile Formation</h3><p data-i18n="cal_text">Choisissez directement un créneau dans mon agenda Cal.com.</p><a class="btn" href="https://cal.com/innocent-twagirumukiza/agile-formation" target="_blank" rel="noopener" data-i18n="book_slot">Réserver mon créneau →</a></div><div class="calbox"><span class="tag" data-i18n="for_companies">Pour les entreprises</span><h3 data-i18n="inhouse_training">Formation intra</h3><p data-i18n="inhouse_text">Vous souhaitez former une équipe ? Nous pouvons adapter le contenu à votre organisation et à vos problématiques.</p><a class="btn ghost" href="https://cal.com/innocent-twagirumukiza/agile-formation" target="_blank" rel="noopener" data-i18n="talk_need">Échanger sur mon besoin</a></div></div></div></section>
+
+<section id="methode"><div class="wrap"><div class="title"><span class="tag" data-i18n="method_tag">Approche agile.tips</span><h2><span data-i18n="method_title">Comprendre. Pratiquer. Mesurer. Progresser.</span></h2><p><span data-i18n="method_lead">Une logique simple pour transformer la formation en résultats opérationnels.</span></p></div><div class="steps"><div class="step"><b>01</b><strong data-i18n="step1_title">Comprendre</strong><p data-i18n="step1_text">Les principes et concepts essentiels.</p></div><div class="step"><b>02</b><strong data-i18n="step2_title">Pratiquer</strong><p data-i18n="step2_text">Ateliers, simulations et cas réels.</p></div><div class="step"><b>03</b><strong data-i18n="step3_title">Mesurer</strong><p data-i18n="step3_text">Diagnostic de maturité et feedback.</p></div><div class="step"><b>04</b><strong data-i18n="step4_title">Progresser</strong><p data-i18n="step4_text">Formation et plan d’action adaptés.</p></div></div></div></section>
+
+<section><div class="wrap"><div class="cta"><div><h2><span data-i18n="cta_title">Un projet Agile à lancer ou à améliorer ?</span></h2><p><span data-i18n="cta_desc">Réservez directement un échange de 30 minutes pour parler de votre contexte.</span></p></div><a class="btn" href="https://cal.com/innocent-twagirumukiza/agile-formation" target="_blank" rel="noopener"><span data-i18n="book">Prendre rendez-vous</span></a></div></div></section>
+
+<div id="legalOverlay" class="legal-overlay" role="dialog" aria-modal="true" aria-labelledby="legalTitle" onclick="if(event.target===this)closeLegal()"><div class="legal-modal"><button class="legal-close" onclick="closeLegal()" aria-label="Close">×</button><div class="legal-tabs"><button id="legalTab" onclick="openLegal('legal')">Mentions légales</button><button id="privacyTab" onclick="openLegal('privacy')">Confidentialité</button><button id="cookiesTab" onclick="openLegal('cookies')">Cookies</button><button id="termsTab" onclick="openLegal('terms')">CGU & Licence</button></div><div id="legalContent"></div></div></div>
+<footer><div class="wrap">© 2026 agile.tips · <span data-i18n="footer_trainings">Formations Scrum, Kanban & Lean Startup</span> · <button class="footer-link" onclick="openLegal('legal')" data-i18n="legal">Mentions légales</button> · <button class="footer-link" onclick="openLegal('privacy')" data-i18n="privacy">Politique de confidentialité</button> · <button class="footer-link" onclick="openLegal('cookies')" data-i18n="cookies">Cookies</button> · <button class="footer-link" onclick="openLegal('terms')" data-i18n="terms">CGU & Licence</button><div class="signature">by Twagirumukiza · <a href="https://www.linkedin.com/in/innocent-twagirumukiza/" target="_blank" rel="noopener">LinkedIn</a></div></div></footer>
+
+<script>
+const QUIZ = {
+scrum: {
+ name:"Scrum", dims:["Empirisme","Valeur & priorisation","Sprint","Collaboration","Amélioration continue"],
+ qs:[
+ ["Les décisions de l’équipe s’appuient-elles régulièrement sur des résultats observés ?","Empirisme"],
+ ["Le Product Backlog est-il régulièrement ordonné selon la valeur et l’apprentissage ?","Valeur & priorisation"],
+ ["Le Sprint possède-t-il un objectif clair qui guide les décisions ?","Sprint"],
+ ["Les Developers disposent-ils d’une autonomie réelle pour décider comment réaliser le travail ?","Collaboration"],
+ ["Les rétrospectives débouchent-elles sur des améliorations réellement expérimentées ?","Amélioration continue"],
+ ["Les parties prenantes donnent-elles régulièrement du feedback sur l’Increment ?","Valeur & priorisation"],
+ ["L’équipe inspecte-t-elle fréquemment ce qu’elle produit plutôt que de seulement suivre un plan ?","Empirisme"],
+ ["Le Daily Scrum sert-il réellement à adapter le plan vers le Sprint Goal ?","Sprint"],
+ ["Les désaccords sont-ils traités par la transparence et les faits ?","Collaboration"],
+ ["Les problèmes récurrents sont-ils analysés plutôt que simplement contournés ?","Amélioration continue"],
+ ["Le Product Owner peut-il réellement arbitrer les priorités ?","Valeur & priorisation"],
+ ["L’équipe sait-elle expliquer ce qui rend un Increment utilisable ?","Empirisme"],
+ ["Les Sprints produisent-ils régulièrement un Increment de valeur ?","Sprint"],
+ ["Les responsabilités sont-elles suffisamment claires pour éviter les silos ?","Collaboration"],
+ ["Les améliorations sont-elles suivies jusqu’à vérifier leur effet ?","Amélioration continue"],
+ ["Les décisions produit sont-elles révisées lorsque les hypothèses changent ?","Valeur & priorisation"],
+ ["L’équipe utilise-t-elle les événements Scrum comme des moments d’inspection et d’adaptation ?","Empirisme"],
+ ["Les obstacles sont-ils rendus visibles rapidement ?","Collaboration"],
+ ["L’équipe protège-t-elle la qualité au lieu de repousser les problèmes ?","Sprint"],
+ ["La rétrospective permet-elle de remettre en question le système de travail ?","Amélioration continue"]
+ ]},
+kanban:{
+ name:"Kanban", dims:["Flux","WIP","Politiques","Métriques","Amélioration continue"],
+ qs:[
+ ["Le travail est-il visualisé de bout en bout ?","Flux"],["Les limites WIP sont-elles réellement respectées ?","WIP"],
+ ["Les règles de passage entre colonnes sont-elles explicites ?","Politiques"],["Le cycle time est-il suivi pour comprendre le système ?","Métriques"],
+ ["L’équipe expérimente-t-elle progressivement des améliorations ?","Amélioration continue"],
+ ["Les blocages sont-ils visibles immédiatement ?","Flux"],["Le démarrage de nouveaux travaux est-il limité quand le système est saturé ?","WIP"],
+ ["Les classes de service sont-elles comprises par les personnes concernées ?","Politiques"],["Le throughput est-il utilisé pour analyser le système ?","Métriques"],
+ ["Les décisions d’amélioration sont-elles fondées sur des observations ?","Amélioration continue"],
+ ["Les files d’attente sont-elles régulièrement examinées ?","Flux"],["Le multitâche est-il activement réduit ?","WIP"],
+ ["Les politiques de priorité sont-elles transparentes ?","Politiques"],["Les données servent-elles à discuter du flux plutôt qu’à évaluer les individus ?","Métriques"],
+ ["Les changements sont-ils testés puis évalués ?","Amélioration continue"],
+ ["L’équipe cherche-t-elle les contraintes du système plutôt que les responsables individuels ?","Flux"],
+ ["Le WIP est-il adapté à la capacité réelle du système ?","WIP"],
+ ["Les politiques permettent-elles de traiter les demandes urgentes sans chaos ?","Politiques"],
+ ["Les tendances de cycle time et throughput sont-elles analysées ensemble ?","Métriques"],
+ ["L’amélioration continue est-elle devenue une pratique régulière ?","Amélioration continue"]
+ ]},
+lean:{
+ name:"Lean Startup", dims:["Hypothèses","Expérimentation","MVP","Métriques","Apprentissage & pivot"],
+ qs:[
+ ["Les hypothèses critiques sont-elles explicitement formulées ?","Hypothèses"],["Les expérimentations ont-elles un critère de décision défini à l’avance ?","Expérimentation"],
+ ["L’équipe teste-t-elle une idée avec le plus petit produit viable possible ?","MVP"],["Les métriques mesurent-elles réellement la valeur ou le comportement ?","Métriques"],
+ ["Les résultats peuvent-ils conduire à un pivot ?","Apprentissage & pivot"],
+ ["Les hypothèses sont-elles priorisées selon leur niveau de risque ?","Hypothèses"],["Les tests permettent-ils d’infirmer une idée, pas seulement de la confirmer ?","Expérimentation"],
+ ["Le MVP est-il conçu pour apprendre plutôt que pour être parfait ?","MVP"],
+ ["Les vanity metrics sont-elles distinguées des métriques actionnables ?","Métriques"],
+ ["Les apprentissages modifient-ils réellement les décisions ?","Apprentissage & pivot"],
+ ["Les hypothèses client sont-elles confrontées au terrain ?","Hypothèses"],["Les expérimentations sont-elles rapides et peu coûteuses ?","Expérimentation"],
+ ["L’équipe évite-t-elle de développer massivement avant validation ?","MVP"],["Les cohortes ou taux de conversion sont-ils utilisés lorsque pertinent ?","Métriques"],
+ ["Un résultat négatif est-il considéré comme un apprentissage utile ?","Apprentissage & pivot"],
+ ["Les hypothèses de valeur sont-elles distinguées des hypothèses techniques ?","Hypothèses"],["Chaque expérimentation répond-elle à une question précise ?","Expérimentation"],
+ ["Le MVP est-il suffisamment simple pour réduire le risque d’investissement ?","MVP"],
+ ["Les métriques influencent-elles les décisions produit ?","Métriques"],
+ ["L’équipe sait-elle quand persévérer, pivoter ou arrêter ?","Apprentissage & pivot"]
+ ]},
+agile:{
+ name:"Agile global", dims:["Valeur","Feedback","Adaptation","Collaboration","Apprentissage"],
+ qs:[
+ ["Les objectifs sont-ils formulés en termes de valeur plutôt qu’en volume de tâches ?","Valeur"],["Les utilisateurs ou clients donnent-ils régulièrement du feedback ?","Feedback"],
+ ["Le plan est-il adapté lorsque de nouvelles informations apparaissent ?","Adaptation"],["Les équipes disposent-elles d’un espace réel pour décider ?","Collaboration"],
+ ["Les erreurs et résultats sont-ils transformés en apprentissage ?","Apprentissage"],
+ ["Les priorités reflètent-elles les besoins métier actuels ?","Valeur"],["Les feedbacks sont-ils suffisamment rapides pour influencer le travail en cours ?","Feedback"],
+ ["L’organisation accepte-t-elle de changer une décision devenue obsolète ?","Adaptation"],
+ ["Les équipes partagent-elles les informations importantes sans silos ?","Collaboration"],
+ ["Les rétrospectives ou revues conduisent-elles à des changements concrets ?","Apprentissage"],
+ ["Les investissements sont-ils liés à des résultats attendus ?","Valeur"],["Les parties prenantes participent-elles aux boucles de feedback ?","Feedback"],
+ ["Les roadmaps sont-elles traitées comme des orientations adaptables ?","Adaptation"],
+ ["Les responsabilités favorisent-elles l’autonomie plutôt que le micro-management ?","Collaboration"],
+ ["Les expérimentations servent-elles à réduire l’incertitude ?","Apprentissage"],
+ ["La réussite est-elle évaluée par les résultats et non seulement par les livrables ?","Valeur"],
+ ["Le délai entre livraison et feedback est-il réduit ?","Feedback"],
+ ["Les équipes réévaluent-elles leurs hypothèses ?","Adaptation"],
+ ["Les équipes optimisent-elles le système global plutôt que leur activité locale ?","Collaboration"],
+ ["Les décisions sont-elles réexaminées à partir de données et de retours ?","Apprentissage"]
+ ]}
+};
+
+const DIAG_EN_Q={
+"Les décisions de l’équipe s’appuient-elles régulièrement sur des résultats observés ?":"Do team decisions regularly rely on observed results?",
+"Le Product Backlog est-il régulièrement ordonné selon la valeur et l’apprentissage ?":"Is the Product Backlog regularly ordered according to value and learning?",
+"Le Sprint possède-t-il un objectif clair qui guide les décisions ?":"Does the Sprint have a clear goal that guides decisions?",
+"Les Developers disposent-ils d’une autonomie réelle pour décider comment réaliser le travail ?":"Do the Developers have real autonomy to decide how to do the work?",
+"Les rétrospectives débouchent-elles sur des améliorations réellement expérimentées ?":"Do retrospectives lead to improvements that are actually tested?",
+"Les parties prenantes donnent-elles régulièrement du feedback sur l’Increment ?":"Do stakeholders regularly provide feedback on the Increment?",
+"L’équipe inspecte-t-elle fréquemment ce qu’elle produit plutôt que de seulement suivre un plan ?":"Does the team frequently inspect what it produces rather than simply follow a plan?",
+"Le Daily Scrum sert-il réellement à adapter le plan vers le Sprint Goal ?":"Is the Daily Scrum really used to adapt the plan toward the Sprint Goal?",
+"Les désaccords sont-ils traités par la transparence et les faits ?":"Are disagreements handled through transparency and facts?",
+"Les problèmes récurrents sont-ils analysés plutôt que simplement contournés ?":"Are recurring problems analyzed rather than simply worked around?",
+"Le Product Owner peut-il réellement arbitrer les priorités ?":"Can the Product Owner genuinely make priority decisions?",
+"L’équipe sait-elle expliquer ce qui rend un Increment utilisable ?":"Can the team explain what makes an Increment usable?",
+"Les Sprints produisent-ils régulièrement un Increment de valeur ?":"Do Sprints regularly produce a valuable Increment?",
+"Les responsabilités sont-elles suffisamment claires pour éviter les silos ?":"Are accountabilities clear enough to avoid silos?",
+"Les améliorations sont-elles suivies jusqu’à vérifier leur effet ?":"Are improvements followed through to verify their effect?",
+"Les décisions produit sont-elles révisées lorsque les hypothèses changent ?":"Are product decisions revisited when assumptions change?",
+"L’équipe utilise-t-elle les événements Scrum comme des moments d’inspection et d’adaptation ?":"Does the team use Scrum events as moments for inspection and adaptation?",
+"Les obstacles sont-ils rendus visibles rapidement ?":"Are impediments made visible quickly?",
+"L’équipe protège-t-elle la qualité au lieu de repousser les problèmes ?":"Does the team protect quality instead of postponing problems?",
+"La rétrospective permet-elle de remettre en question le système de travail ?":"Does the retrospective challenge the way the work system operates?",
+"Le travail est-il visualisé de bout en bout ?":"Is work visualized from end to end?",
+"Les limites WIP sont-elles réellement respectées ?":"Are WIP limits actually respected?",
+"Les règles de passage entre colonnes sont-elles explicites ?":"Are the rules for moving work between columns explicit?",
+"Le cycle time est-il suivi pour comprendre le système ?":"Is cycle time tracked to understand the system?",
+"L’équipe expérimente-t-elle progressivement des améliorations ?":"Does the team progressively experiment with improvements?",
+"Les blocages sont-ils visibles immédiatement ?":"Are blockers immediately visible?",
+"Le démarrage de nouveaux travaux est-il limité quand le système est saturé ?":"Is starting new work limited when the system is saturated?",
+"Les classes de service sont-elles comprises par les personnes concernées ?":"Are classes of service understood by the people concerned?",
+"Le throughput est-il utilisé pour analyser le système ?":"Is throughput used to analyze the system?",
+"Les décisions d’amélioration sont-elles fondées sur des observations ?":"Are improvement decisions based on observations?",
+"Les files d’attente sont-elles régulièrement examinées ?":"Are queues regularly reviewed?",
+"Le multitâche est-il activement réduit ?":"Is multitasking actively reduced?",
+"Les politiques de priorité sont-elles transparentes ?":"Are priority policies transparent?",
+"Les données servent-elles à discuter du flux plutôt qu’à évaluer les individus ?":"Is data used to discuss flow rather than evaluate individuals?",
+"Les changements sont-ils testés puis évalués ?":"Are changes tested and then evaluated?",
+"L’équipe cherche-t-elle les contraintes du système plutôt que les responsables individuels ?":"Does the team look for system constraints rather than individual people to blame?",
+"Le WIP est-il adapté à la capacité réelle du système ?":"Is WIP adapted to the system's actual capacity?",
+"Les politiques permettent-elles de traiter les demandes urgentes sans chaos ?":"Do policies allow urgent requests to be handled without chaos?",
+"Les tendances de cycle time et throughput sont-elles analysées ensemble ?":"Are cycle time and throughput trends analyzed together?",
+"L’amélioration continue est-elle devenue une pratique régulière ?":"Has continuous improvement become a regular practice?",
+"Les hypothèses critiques sont-elles explicitement formulées ?":"Are critical assumptions explicitly stated?",
+"Les expérimentations ont-elles un critère de décision défini à l’avance ?":"Do experiments have a decision criterion defined in advance?",
+"L’équipe teste-t-elle une idée avec le plus petit produit viable possible ?":"Does the team test an idea with the smallest viable product possible?",
+"Les métriques mesurent-elles réellement la valeur ou le comportement ?":"Do metrics actually measure value or behavior?",
+"Les résultats peuvent-ils conduire à un pivot ?":"Can results lead to a pivot?",
+"Les hypothèses sont-elles priorisées selon leur niveau de risque ?":"Are assumptions prioritized according to their level of risk?",
+"Les tests permettent-ils d’infirmer une idée, pas seulement de la confirmer ?":"Do tests allow an idea to be disproved, not just confirmed?",
+"Le MVP est-il conçu pour apprendre plutôt que pour être parfait ?":"Is the MVP designed to learn rather than to be perfect?",
+"Les vanity metrics sont-elles distinguées des métriques actionnables ?":"Are vanity metrics distinguished from actionable metrics?",
+"Les apprentissages modifient-ils réellement les décisions ?":"Do learnings actually change decisions?",
+"Les hypothèses client sont-elles confrontées au terrain ?":"Are customer assumptions tested in the field?",
+"Les expérimentations sont-elles rapides et peu coûteuses ?":"Are experiments fast and low-cost?",
+"L’équipe évite-t-elle de développer massivement avant validation ?":"Does the team avoid large-scale development before validation?",
+"Les cohortes ou taux de conversion sont-ils utilisés lorsque pertinent ?":"Are cohorts or conversion rates used when relevant?",
+"Un résultat négatif est-il considéré comme un apprentissage utile ?":"Is a negative result considered useful learning?",
+"Les hypothèses de valeur sont-elles distinguées des hypothèses techniques ?":"Are value assumptions distinguished from technical assumptions?",
+"Chaque expérimentation répond-elle à une question précise ?":"Does each experiment answer a specific question?",
+"Le MVP est-il suffisamment simple pour réduire le risque d’investissement ?":"Is the MVP simple enough to reduce investment risk?",
+"Les métriques influencent-elles les décisions produit ?":"Do metrics influence product decisions?",
+"L’équipe sait-elle quand persévérer, pivoter ou arrêter ?":"Does the team know when to persevere, pivot or stop?",
+"Les objectifs sont-ils formulés en termes de valeur plutôt qu’en volume de tâches ?":"Are objectives expressed in terms of value rather than task volume?",
+"Les utilisateurs ou clients donnent-ils régulièrement du feedback ?":"Do users or customers regularly provide feedback?",
+"Le plan est-il adapté lorsque de nouvelles informations apparaissent ?":"Is the plan adapted when new information appears?",
+"Les équipes disposent-elles d’un espace réel pour décider ?":"Do teams have real space to make decisions?",
+"Les erreurs et résultats sont-ils transformés en apprentissage ?":"Are mistakes and results turned into learning?",
+"Les priorités reflètent-elles les besoins métier actuels ?":"Do priorities reflect current business needs?",
+"Les feedbacks sont-ils suffisamment rapides pour influencer le travail en cours ?":"Is feedback fast enough to influence work in progress?",
+"L’organisation accepte-t-elle de changer une décision devenue obsolète ?":"Does the organization accept changing an outdated decision?",
+"Les équipes partagent-elles les informations importantes sans silos ?":"Do teams share important information without silos?",
+"Les rétrospectives ou revues conduisent-elles à des changements concrets ?":"Do retrospectives or reviews lead to concrete changes?",
+"Les investissements sont-ils liés à des résultats attendus ?":"Are investments linked to expected outcomes?",
+"Les parties prenantes participent-elles aux boucles de feedback ?":"Do stakeholders participate in feedback loops?",
+"Les roadmaps sont-elles traitées comme des orientations adaptables ?":"Are roadmaps treated as adaptable directions?",
+"Les responsabilités favorisent-elles l’autonomie plutôt que le micro-management ?":"Do accountabilities encourage autonomy rather than micromanagement?",
+"Les expérimentations servent-elles à réduire l’incertitude ?":"Are experiments used to reduce uncertainty?",
+"La réussite est-elle évaluée par les résultats et non seulement par les livrables ?":"Is success assessed by outcomes, not only deliverables?",
+"Le délai entre livraison et feedback est-il réduit ?":"Is the time between delivery and feedback reduced?",
+"Les équipes réévaluent-elles leurs hypothèses ?":"Do teams reassess their assumptions?",
+"Les équipes optimisent-elles le système global plutôt que leur activité locale ?":"Do teams optimize the overall system rather than their local activity?",
+"Les décisions sont-elles réexaminées à partir de données et de retours ?":"Are decisions revisited using data and feedback?",
+};
+
+const DIM_EN={"Empirisme":"Empiricism","Valeur & priorisation":"Value & prioritization","Sprint":"Sprint","Collaboration":"Collaboration","Amélioration continue":"Continuous improvement","Flux":"Flow","WIP":"WIP","Politiques":"Policies","Métriques":"Metrics","Hypothèses":"Assumptions","Expérimentation":"Experimentation","MVP":"MVP","Apprentissage & pivot":"Learning & pivot","Valeur":"Value","Feedback":"Feedback","Adaptation":"Adaptation","Apprentissage":"Learning"};
+let current=null, answers=[];
+function openDiagnostic(type){
+ current=type; answers=[]; const q=QUIZ[type], lang=document.documentElement.lang==='en';
+ const app=document.getElementById("diagnosticApp");
+ app.style.display="block"; app.innerHTML=`
+ <div class="diag-head"><div><span class="tag">${lang?'Assessment':'Diagnostic'} ${q.name}</span><h3>${lang?'Assess your Agile maturity in 20 questions':'Évaluez votre maturité en 20 questions'}</h3></div><span id="diagCounter">1 / 20</span></div>
+ <div class="diag-progress"><i id="diagBar"></i></div>
+ <div id="diagQuestion"></div>`;
+ renderQ(); app.scrollIntoView({behavior:"smooth",block:"start"});
+}
+function renderQ(){
+ const q=QUIZ[current].qs[answers.length], lang=document.documentElement.lang==='en';
+ document.getElementById("diagCounter").textContent=(answers.length+1)+" / 20";
+ document.getElementById("diagBar").style.width=((answers.length)/20*100)+"%";
+ const labels=lang?["Never","Rarely","Sometimes","Often","Always"]:["Jamais","Rarement","Parfois","Souvent","Toujours"];
+ const text=lang?(DIAG_EN_Q[q[0]]||q[0]):q[0];
+ document.getElementById("diagQuestion").innerHTML=`
+ <div class="diag-q">${text}</div>
+ <div class="scale">${[1,2,3,4,5].map(v=>`<button onclick="choose(${v})"><b>${v}</b><small>${labels[v-1]}</small></button>`).join("")}</div>`;
+}
+function choose(v){
+ answers.push({v,dim:QUIZ[current].qs[answers.length][1]});
+ if(answers.length<20) renderQ(); else showResult();
+}
+function showResult(){
+ const q=QUIZ[current], lang=document.documentElement.lang==='en', total=answers.reduce((s,a)=>s+a.v,0), score=Math.round((total/100)*100);
+ const dims=q.dims.map(d=>{const a=answers.filter(x=>x.dim===d); return {d,score:Math.round(a.reduce((s,x)=>s+x.v,0)/a.length/5*100)}}).sort((a,b)=>b.score-a.score);
+ let level=score<45?(lang?'Initial':'Initial'):score<65?(lang?'Developing':'En développement'):score<80?(lang?'Intermediate':'Intermédiaire'):(lang?'Advanced':'Avancé');
+ let weakest=dims[dims.length-1], strongest=dims[0];
+ let rec=score<55?(lang?`Priority: strengthen the ${q.name} fundamentals.`:`Priorité : consolider les fondamentaux ${q.name}.`):(lang?`Priority: deepen ${DIM_EN[weakest.d]||weakest.d} while building on ${DIM_EN[strongest.d]||strongest.d}.`:`Priorité : approfondir ${weakest.d} tout en capitalisant sur ${strongest.d}.`);
+ document.getElementById("diagBar").style.width="100%";
+ document.getElementById("diagQuestion").innerHTML=`
+ <div class="result">
+ <span class="tag">${lang?'Your result':'Votre résultat'}</span><div class="bigscore">${score}<small>/100</small></div>
+ <h3>${lang?'Maturity':'Maturité'} ${level}</h3><p>${rec}</p>
+ <div class="dimensions">${dims.map(x=>`<div><span>${lang?(DIM_EN[x.d]||x.d):x.d}</span><b>${x.score}/100</b><div class="dimbar"><i style="width:${x.score}%"></i></div></div>`).join("")}</div>
+ <div class="result-box"><strong>${lang?'Recommended training':'Formation recommandée'}</strong><p>${q.name} — ${lang?'a learning path adapted to your level and improvement area.':'parcours adapté à votre niveau et à votre axe de progression.'}</p></div>
+ <div class="actions center"><a class="btn" href="https://cal.com/innocent-twagirumukiza/agile-formation" target="_blank" rel="noopener">${lang?'Book 30 min with me':'Réserver 30 min avec moi'}</a><button class="btn ghost" onclick="openDiagnostic('${current}')">${lang?'Retake assessment':'Refaire le diagnostic'}</button></div>
+ </div>`;
+}
+
+const KNOWLEDGE = {
+  scrum: [
+    {q:["Quel est le rôle principal du Product Owner ?","Quel est le rôle principal du Product Owner ?"],o:[["Maximiser la valeur du produit","Maximiser la valeur du produit"],["Distribuer les tâches","Distribuer les tâches"],["Animer le Daily Scrum","Animer le Daily Scrum"],["Valider le code","Valider le code"]],a:0,e:["Le Product Owner est responsable de maximiser la valeur du produit, notamment par une gestion efficace du Product Backlog.","Le Product Owner est responsable de maximiser la valeur du produit, notamment par une gestion efficace du Product Backlog."]},
+    {q:["Quel est l’objectif d’un Sprint ?","Quel est l’objectif d’un Sprint ?"],o:[["Créer un Increment de valeur vers le Sprint Goal","Créer un Increment de valeur vers le Sprint Goal"],["Terminer toutes les tâches","Terminer toutes les tâches"],["Produire un rapport","Produire un rapport"],["Former les utilisateurs","Former les utilisateurs"]],a:0,e:["Le Sprint sert à créer un Increment utilisable qui progresse vers le Sprint Goal.","Le Sprint sert à créer un Increment utilisable qui progresse vers le Sprint Goal."]},
+    {q:["Qui crée le Sprint Backlog ?","Qui crée le Sprint Backlog ?"],o:[["Les Developers","Les Developers"],["Le Product Owner seul","Le Product Owner seul"],["Le Scrum Master seul","Le Scrum Master seul"],["Les parties prenantes","Les parties prenantes"]],a:0,e:["Les Developers sélectionnent le travail et construisent le Sprint Backlog pour atteindre le Sprint Goal.","Les Developers sélectionnent le travail et construisent le Sprint Backlog pour atteindre le Sprint Goal."]},
+    {q:["Que doit être un Increment ?","Que doit être un Increment ?"],o:[["Utilisable et conforme à la Definition of Done","Utilisable et conforme à la Definition of Done"],["Forcément livré au client","Forcément livré au client"],["Uniquement documenté","Uniquement documenté"],["Validé par le Scrum Master","Validé par le Scrum Master"]],a:0,e:["Un Increment doit être utilisable et respecter la Definition of Done.","Un Increment doit être utilisable et respecter la Definition of Done."]},
+    {q:["À quoi sert le Daily Scrum ?","À quoi sert le Daily Scrum ?"],o:[["Inspecter la progression vers le Sprint Goal et adapter le plan","Inspecter la progression vers le Sprint Goal et adapter le plan"],["Faire un reporting au manager","Faire un reporting au manager"],["Répartir les tâches par le Scrum Master","Répartir les tâches par le Scrum Master"],["Présenter le produit au client","Présenter le produit au client"]],a:0,e:["Le Daily Scrum est un événement pour les Developers afin d’inspecter la progression vers le Sprint Goal et adapter le plan.","Le Daily Scrum est un événement pour les Developers afin d’inspecter la progression vers le Sprint Goal et adapter le plan."]},
+    {q:["Quel est le rôle du Scrum Master ?","Quel est le rôle du Scrum Master ?"],o:[["Aider à établir Scrum et améliorer son efficacité","Aider à établir Scrum et améliorer son efficacité"],["Diriger les Developers","Diriger les Developers"],["Prioriser le Product Backlog","Prioriser le Product Backlog"],["Attribuer les tâches","Attribuer les tâches"]],a:0,e:["Le Scrum Master aide l’organisation et l’équipe à comprendre et appliquer Scrum efficacement.","Le Scrum Master aide l’organisation et l’équipe à comprendre et appliquer Scrum efficacement."]},
+    {q:["Qui est responsable de la qualité de l’Increment ?","Qui est responsable de la qualité de l’Increment ?"],o:[["Les Developers","Les Developers"],["Le Product Owner seul","Le Product Owner seul"],["Le Scrum Master","Le Scrum Master"],["Le client","Le client"]],a:0,e:["Les Developers sont responsables de créer un Increment qui respecte la Definition of Done.","Les Developers sont responsables de créer un Increment qui respecte la Definition of Done."]},
+    {q:["Le Product Backlog est…","Le Product Backlog est…"],o:[["Une liste ordonnée de ce qui est nécessaire pour améliorer le produit","Une liste ordonnée de ce qui est nécessaire pour améliorer le produit"],["Un planning figé","Un planning figé"],["Une liste de tâches techniques uniquement","Une liste de tâches techniques uniquement"],["Un compte rendu de réunion","Un compte rendu de réunion"]],a:0,e:["Le Product Backlog est une liste émergente et ordonnée de ce qui est nécessaire pour améliorer le produit.","Le Product Backlog est une liste émergente et ordonnée de ce qui est nécessaire pour améliorer le produit."]},
+    {q:["Quel principe est central dans Scrum ?","Quel principe est central dans Scrum ?"],o:[["Empirisme","Empirisme"],["Prédiction parfaite","Prédiction parfaite"],["Contrôle hiérarchique","Contrôle hiérarchique"],["Documentation exhaustive","Documentation exhaustive"]],a:0,e:["Scrum repose sur l’empirisme : transparence, inspection et adaptation.","Scrum repose sur l’empirisme : transparence, inspection et adaptation."]},
+    {q:["Combien de personnes peuvent être Scrum Master ?","Combien de personnes peuvent être Scrum Master ?"],o:[["Une personne peut assurer ce rôle pour une ou plusieurs équipes","Une personne peut assurer ce rôle pour une ou plusieurs équipes"],["Exactement trois","Exactement trois"],["Uniquement le Product Owner","Uniquement le Product Owner"],["Toute l’équipe obligatoirement","Toute l’équipe obligatoirement"]],a:0,e:["Une personne peut être Scrum Master pour une ou plusieurs équipes selon le contexte.","Une personne peut être Scrum Master pour une ou plusieurs équipes selon le contexte."]},
+    {q:["À quoi sert la Sprint Review ?","À quoi sert la Sprint Review ?"],o:[["Inspecter le résultat du Sprint et déterminer les adaptations futures","Inspecter le résultat du Sprint et déterminer les adaptations futures"],["Évaluer individuellement les Developers","Évaluer individuellement les Developers"],["Planifier tous les prochains Sprints","Planifier tous les prochains Sprints"],["Faire le Daily Scrum","Faire le Daily Scrum"]],a:0,e:["La Sprint Review permet d’inspecter le résultat avec les parties prenantes et d’adapter le Product Backlog.","La Sprint Review permet d’inspecter le résultat avec les parties prenantes et d’adapter le Product Backlog."]},
+    {q:["À quoi sert la Sprint Retrospective ?","À quoi sert la Sprint Retrospective ?"],o:[["Planifier des améliorations de qualité et d’efficacité","Planifier des améliorations de qualité et d’efficacité"],["Présenter le produit aux clients","Présenter le produit aux clients"],["Prioriser seul le backlog","Prioriser seul le backlog"],["Attribuer les tâches","Attribuer les tâches"]],a:0,e:["La rétrospective cherche des améliorations concrètes de la qualité et de l’efficacité.","La rétrospective cherche des améliorations concrètes de la qualité et de l’efficacité."]},
+    {q:["Un Sprint peut-il être annulé ?","Un Sprint peut-il être annulé ?"],o:[["Oui, par le Product Owner si le Sprint Goal devient obsolète","Oui, par le Product Owner si le Sprint Goal devient obsolète"],["Non, jamais","Non, jamais"],["Oui, par le Scrum Master seul","Oui, par le Scrum Master seul"],["Oui, par n’importe quel Developer","Oui, par n’importe quel Developer"]],a:0,e:["Le Product Owner peut annuler un Sprint si le Sprint Goal devient obsolète.","Le Product Owner peut annuler un Sprint si le Sprint Goal devient obsolète."]},
+    {q:["La Definition of Done sert principalement à…","La Definition of Done sert principalement à…"],o:[["Créer une compréhension partagée de l’état terminé","Créer une compréhension partagée de l’état terminé"],["Prioriser le backlog","Prioriser le backlog"],["Mesurer la vélocité","Mesurer la vélocité"],["Organiser le Daily Scrum","Organiser le Daily Scrum"]],a:0,e:["Elle formalise les critères de qualité nécessaires pour considérer un travail comme faisant partie d’un Increment.","Elle formalise les critères de qualité nécessaires pour considérer un travail comme faisant partie d’un Increment."]},
+    {q:["Qui peut modifier le Product Backlog ?","Qui peut modifier le Product Backlog ?"],o:[["Le Product Owner peut déléguer ce travail, mais reste responsable","Le Product Owner peut déléguer ce travail, mais reste responsable"],["Uniquement le Scrum Master","Uniquement le Scrum Master"],["Uniquement les Developers","Uniquement les Developers"],["Uniquement les clients","Uniquement les clients"]],a:0,e:["Le Product Owner reste responsable du Product Backlog, même si certaines activités sont déléguées.","Le Product Owner reste responsable du Product Backlog, même si certaines activités sont déléguées."]},
+    {q:["Le Sprint Goal est…","Le Sprint Goal est…"],o:[["Un objectif unique du Sprint","Un objectif unique du Sprint"],["Une liste de tâches","Une liste de tâches"],["Un KPI financier","Un KPI financier"],["Une Definition of Done","Une Definition of Done"]],a:0,e:["Le Sprint Goal fournit l’objectif cohérent qui donne une direction au Sprint.","Le Sprint Goal fournit l’objectif cohérent qui donne une direction au Sprint."]},
+    {q:["Pourquoi rendre le Product Backlog transparent ?","Pourquoi rendre le Product Backlog transparent ?"],o:[["Pour permettre une inspection fiable des décisions et du travail à venir","Pour permettre une inspection fiable des décisions et du travail à venir"],["Pour éviter tout changement","Pour éviter tout changement"],["Pour imposer un planning annuel","Pour imposer un planning annuel"],["Pour supprimer les échanges","Pour supprimer les échanges"]],a:0,e:["La transparence est indispensable à l’inspection et à l’adaptation.","La transparence est indispensable à l’inspection et à l’adaptation."]},
+    {q:["Que signifie inspecter en Scrum ?","Que signifie inspecter en Scrum ?"],o:[["Examiner régulièrement les artefacts et la progression pour détecter des écarts","Examiner régulièrement les artefacts et la progression pour détecter des écarts"],["Surveiller les individus","Surveiller les individus"],["Contrôler les horaires","Contrôler les horaires"],["Auditer uniquement le code","Auditer uniquement le code"]],a:0,e:["L’inspection vise les artefacts et la progression, pas les personnes.","L’inspection vise les artefacts et la progression, pas les personnes."]},
+    {q:["Quelle attitude favorise Scrum ?","Quelle attitude favorise Scrum ?"],o:[["Collaboration, autonomie et adaptation","Collaboration, autonomie et adaptation"],["Contrôle centralisé","Contrôle centralisé"],["Plans figés","Plans figés"],["Travail en silos","Travail en silos"]],a:0,e:["Scrum favorise une équipe collaborative, auto-gérée et capable de s’adapter.","Scrum favorise une équipe collaborative, auto-gérée et capable de s’adapter."]},
+    {q:["Lequel est un événement Scrum officiel ?","Lequel est un événement Scrum officiel ?"],o:[["Sprint Planning","Sprint Planning"],["Project Status Meeting","Project Status Meeting"],["Release Committee","Release Committee"],["Architecture Board","Architecture Board"]],a:0,e:["Le Sprint Planning est l’un des événements officiels de Scrum.","Le Sprint Planning est l’un des événements officiels de Scrum."]},
+  ],
+  kanban: [
+    {q:["Que signifie limiter le WIP ?","Que signifie limiter le WIP ?"],o:[["Limiter le travail en cours","Limiter le travail en cours"],["Supprimer les priorités","Supprimer les priorités"],["Augmenter les tâches ouvertes","Augmenter les tâches ouvertes"],["Réduire les équipes","Réduire les équipes"]],a:0,e:["Limiter le WIP réduit le multitâche et favorise un flux plus régulier.","Limiter le WIP réduit le multitâche et favorise un flux plus régulier."]},
+    {q:["Quel est l’objectif principal de Kanban ?","Quel est l’objectif principal de Kanban ?"],o:[["Améliorer le flux de travail","Améliorer le flux de travail"],["Créer des Sprints fixes","Créer des Sprints fixes"],["Attribuer des tâches individuellement","Attribuer des tâches individuellement"],["Supprimer les métriques","Supprimer les métriques"]],a:0,e:["Kanban vise notamment à optimiser le flux de valeur à travers le système.","Kanban vise notamment à optimiser le flux de valeur à travers le système."]},
+    {q:["Une politique explicite est…","Une politique explicite est…"],o:[["Une règle de fonctionnement rendue visible et partagée","Une règle de fonctionnement rendue visible et partagée"],["Une sanction","Une sanction"],["Un budget","Un budget"],["Une estimation","Une estimation"]],a:0,e:["Les politiques explicites rendent les règles du système compréhensibles et discutables.","Les politiques explicites rendent les règles du système compréhensibles et discutables."]},
+    {q:["Le Lead Time mesure généralement…","Le Lead Time mesure généralement…"],o:[["Le temps entre la demande et la livraison","Le temps entre la demande et la livraison"],["Le nombre de développeurs","Le nombre de développeurs"],["La taille du backlog","La taille du backlog"],["Le nombre de réunions","Le nombre de réunions"]],a:0,e:["Le Lead Time mesure le temps écoulé entre la demande et sa livraison.","Le Lead Time mesure le temps écoulé entre la demande et sa livraison."]},
+    {q:["Le Cycle Time mesure…","Le Cycle Time mesure…"],o:[["Le temps pendant lequel un élément est réellement traité","Le temps pendant lequel un élément est réellement traité"],["Le temps annuel du projet","Le temps annuel du projet"],["Le nombre de tickets","Le nombre de tickets"],["Le budget","Le budget"]],a:0,e:["Le Cycle Time mesure le temps de traitement d’un élément dans le système.","Le Cycle Time mesure le temps de traitement d’un élément dans le système."]},
+    {q:["Pourquoi visualiser le travail ?","Pourquoi visualiser le travail ?"],o:[["Pour rendre le flux et les blocages visibles","Pour rendre le flux et les blocages visibles"],["Pour décorer le tableau","Pour décorer le tableau"],["Pour supprimer les réunions","Pour supprimer les réunions"],["Pour prédire parfaitement","Pour prédire parfaitement"]],a:0,e:["La visualisation permet de voir l’état du travail, les blocages et les files d’attente.","La visualisation permet de voir l’état du travail, les blocages et les files d’attente."]},
+    {q:["Que se passe-t-il souvent si le WIP est trop élevé ?","Que se passe-t-il souvent si le WIP est trop élevé ?"],o:[["Les délais et files d’attente augmentent","Les délais et files d’attente augmentent"],["Le flux devient automatiquement plus rapide","Le flux devient automatiquement plus rapide"],["La qualité augmente toujours","La qualité augmente toujours"],["Les blocages disparaissent","Les blocages disparaissent"]],a:0,e:["Un WIP excessif augmente souvent les files d’attente, le multitâche et les délais.","Un WIP excessif augmente souvent les files d’attente, le multitâche et les délais."]},
+    {q:["Kanban impose-t-il des rôles Scrum ?","Kanban impose-t-il des rôles Scrum ?"],o:[["Non","Non"],["Oui, exactement trois","Oui, exactement trois"],["Oui, Product Owner uniquement","Oui, Product Owner uniquement"],["Oui, Scrum Master uniquement","Oui, Scrum Master uniquement"]],a:0,e:["Kanban ne prescrit pas les rôles de Scrum.","Kanban ne prescrit pas les rôles de Scrum."]},
+    {q:["Quelle métrique aide à suivre le flux ?","Quelle métrique aide à suivre le flux ?"],o:[["Throughput","Throughput"],["Nombre de réunions","Nombre de réunions"],["Nombre de managers","Nombre de managers"],["Budget annuel","Budget annuel"]],a:0,e:["Le Throughput mesure le nombre d’éléments terminés sur une période donnée.","Le Throughput mesure le nombre d’éléments terminés sur une période donnée."]},
+    {q:["Un système tiré signifie que…","Un système tiré signifie que…"],o:[["Le travail est engagé lorsque la capacité le permet","Le travail est engagé lorsque la capacité le permet"],["Tout est lancé immédiatement","Tout est lancé immédiatement"],["Le manager distribue chaque tâche","Le manager distribue chaque tâche"],["Le backlog est figé","Le backlog est figé"]],a:0,e:["Dans un système tiré, le travail est tiré en fonction de la capacité disponible.","Dans un système tiré, le travail est tiré en fonction de la capacité disponible."]},
+    {q:["Pourquoi gérer les blocages explicitement ?","Pourquoi gérer les blocages explicitement ?"],o:[["Pour éviter qu’ils ne perturbent durablement le flux","Pour éviter qu’ils ne perturbent durablement le flux"],["Pour augmenter le WIP","Pour augmenter le WIP"],["Pour supprimer le tableau","Pour supprimer le tableau"],["Pour masquer les retards","Pour masquer les retards"]],a:0,e:["Rendre les blocages visibles permet de les traiter et de protéger le flux.","Rendre les blocages visibles permet de les traiter et de protéger le flux."]},
+    {q:["Kanban encourage-t-il l’amélioration continue ?","Kanban encourage-t-il l’amélioration continue ?"],o:[["Oui","Oui"],["Non","Non"],["Seulement en fin de projet","Seulement en fin de projet"],["Uniquement avec un audit externe","Uniquement avec un audit externe"]],a:0,e:["L’amélioration continue fait partie des pratiques fondamentales de Kanban.","L’amélioration continue fait partie des pratiques fondamentales de Kanban."]},
+    {q:["Quel est l’intérêt d’un WIP limit par étape ?","Quel est l’intérêt d’un WIP limit par étape ?"],o:[["Contrôler la quantité de travail en cours dans cette étape","Contrôler la quantité de travail en cours dans cette étape"],["Mesurer les salaires","Mesurer les salaires"],["Fixer les congés","Fixer les congés"],["Créer des Sprints","Créer des Sprints"]],a:0,e:["Un WIP limit aide à contrôler les files d’attente et à identifier les contraintes du flux.","Un WIP limit aide à contrôler les files d’attente et à identifier les contraintes du flux."]},
+    {q:["Que permet une représentation cumulative du flux ?","Que permet une représentation cumulative du flux ?"],o:[["Analyser les tendances du travail en cours et des délais","Analyser les tendances du travail en cours et des délais"],["Remplacer toutes les métriques","Remplacer toutes les métriques"],["Évaluer les personnes","Évaluer les personnes"],["Fixer les salaires","Fixer les salaires"]],a:0,e:["Un diagramme de flux cumulatif aide à observer WIP, débit et stabilité du flux.","Un diagramme de flux cumulatif aide à observer WIP, débit et stabilité du flux."]},
+    {q:["Une classe de service sert à…","Une classe de service sert à…"],o:[["Différencier le traitement d’éléments selon leurs caractéristiques et besoins","Différencier le traitement d’éléments selon leurs caractéristiques et besoins"],["Créer un nouveau rôle","Créer un nouveau rôle"],["Définir le budget","Définir le budget"],["Remplacer le WIP","Remplacer le WIP"]],a:0,e:["Les classes de service permettent d’adapter les règles de traitement selon le type de demande.","Les classes de service permettent d’adapter les règles de traitement selon le type de demande."]},
+    {q:["Que faut-il faire si une étape devient un goulot ?","Que faut-il faire si une étape devient un goulot ?"],o:[["Chercher à réduire ou traiter la contrainte du système","Chercher à réduire ou traiter la contrainte du système"],["Ajouter toujours plus de WIP","Ajouter toujours plus de WIP"],["Ignorer le problème","Ignorer le problème"],["Créer un nouveau backlog","Créer un nouveau backlog"]],a:0,e:["Le goulot limite le flux global et mérite une action ciblée.","Le goulot limite le flux global et mérite une action ciblée."]},
+    {q:["Kanban exige-t-il des itérations de deux semaines ?","Kanban exige-t-il des itérations de deux semaines ?"],o:[["Non","Non"],["Oui","Oui"],["Oui, sauf en production","Oui, sauf en production"],["Oui, pour tous les projets","Oui, pour tous les projets"]],a:0,e:["Kanban ne prescrit pas de durée d’itération.","Kanban ne prescrit pas de durée d’itération."]},
+    {q:["Pourquoi mesurer les délais ?","Pourquoi mesurer les délais ?"],o:[["Pour améliorer la prévisibilité et détecter les problèmes de flux","Pour améliorer la prévisibilité et détecter les problèmes de flux"],["Pour noter les personnes","Pour noter les personnes"],["Pour figer les demandes","Pour figer les demandes"],["Pour supprimer les politiques","Pour supprimer les politiques"]],a:0,e:["Les métriques de délai servent à comprendre et améliorer la performance du système.","Les métriques de délai servent à comprendre et améliorer la performance du système."]},
+    {q:["Quel comportement réduit le multitâche ?","Quel comportement réduit le multitâche ?"],o:[["Finir avant de commencer davantage de travail","Finir avant de commencer davantage de travail"],["Ouvrir plusieurs tickets à la fois","Ouvrir plusieurs tickets à la fois"],["Augmenter le WIP","Augmenter le WIP"],["Créer davantage de colonnes","Créer davantage de colonnes"]],a:0,e:["Finir le travail en cours avant d’en commencer davantage réduit le multitâche.","Finir le travail en cours avant d’en commencer davantage réduit le multitâche."]},
+    {q:["Kanban peut-il être utilisé avec Scrum ?","Kanban peut-il être utilisé avec Scrum ?"],o:[["Oui","Oui"],["Non","Non"],["Uniquement avant Scrum","Uniquement avant Scrum"],["Uniquement après Scrum","Uniquement après Scrum"]],a:0,e:["Les pratiques Kanban peuvent compléter Scrum pour améliorer la gestion et le flux du travail.","Les pratiques Kanban peuvent compléter Scrum pour améliorer la gestion et le flux du travail."]},
+  ],
+  lean: [
+    {q:["Que cherche à valider un MVP ?","Que cherche à valider un MVP ?"],o:[["Une hypothèse avec le minimum d’effort nécessaire","Une hypothèse avec le minimum d’effort nécessaire"],["Toutes les fonctionnalités finales","Toutes les fonctionnalités finales"],["La structure juridique","La structure juridique"],["Le budget annuel","Le budget annuel"]],a:0,e:["Le MVP sert à tester rapidement une hypothèse avec un investissement limité.","Le MVP sert à tester rapidement une hypothèse avec un investissement limité."]},
+    {q:["Que signifie Build-Measure-Learn ?","Que signifie Build-Measure-Learn ?"],o:[["Construire, mesurer, apprendre","Construire, mesurer, apprendre"],["Planifier, coder, livrer","Planifier, coder, livrer"],["Vendre, recruter, financer","Vendre, recruter, financer"],["Tester, documenter, auditer","Tester, documenter, auditer"]],a:0,e:["La boucle Lean Startup consiste à construire une expérience, mesurer les résultats et apprendre.","La boucle Lean Startup consiste à construire une expérience, mesurer les résultats et apprendre."]},
+    {q:["Un pivot est…","Un pivot est…"],o:[["Un changement stratégique fondé sur l’apprentissage","Un changement stratégique fondé sur l’apprentissage"],["Un bug technique","Un bug technique"],["Une réunion","Une réunion"],["Une réduction de budget","Une réduction de budget"]],a:0,e:["Le pivot consiste à changer une partie importante de la stratégie tout en conservant les apprentissages utiles.","Le pivot consiste à changer une partie importante de la stratégie tout en conservant les apprentissages utiles."]},
+    {q:["Une métrique actionnable permet…","Une métrique actionnable permet…"],o:[["De relier une mesure à une décision ou une action","De relier une mesure à une décision ou une action"],["De produire un joli tableau","De produire un joli tableau"],["De mesurer uniquement la satisfaction","De mesurer uniquement la satisfaction"],["De remplacer les hypothèses","De remplacer les hypothèses"]],a:0,e:["Une métrique actionnable aide à décider quoi faire ensuite.","Une métrique actionnable aide à décider quoi faire ensuite."]},
+    {q:["Une hypothèse testable doit être…","Une hypothèse testable doit être…"],o:[["Formulée de façon à pouvoir être confrontée à des données","Formulée de façon à pouvoir être confrontée à des données"],["Vague et générale","Vague et générale"],["Impossible à mesurer","Impossible à mesurer"],["Déjà prouvée","Déjà prouvée"]],a:0,e:["Une bonne hypothèse peut être confrontée à des observations ou données.","Une bonne hypothèse peut être confrontée à des observations ou données."]},
+    {q:["Pourquoi expérimenter tôt ?","Pourquoi expérimenter tôt ?"],o:[["Pour réduire l’incertitude avant d’investir davantage","Pour réduire l’incertitude avant d’investir davantage"],["Pour éviter les clients","Pour éviter les clients"],["Pour supprimer le produit","Pour supprimer le produit"],["Pour produire plus de documentation","Pour produire plus de documentation"]],a:0,e:["Les expériences précoces réduisent les risques liés aux hypothèses non vérifiées.","Les expériences précoces réduisent les risques liés aux hypothèses non vérifiées."]},
+    {q:["Le problème-solution fit cherche à vérifier…","Le problème-solution fit cherche à vérifier…"],o:[["Que la solution répond à un problème réel","Que la solution répond à un problème réel"],["Que le code est parfait","Que le code est parfait"],["Que le budget est maximal","Que le budget est maximal"],["Que l’équipe est grande","Que l’équipe est grande"]],a:0,e:["Il s’agit de vérifier que le problème est réel et que la proposition apporte une réponse pertinente.","Il s’agit de vérifier que le problème est réel et que la proposition apporte une réponse pertinente."]},
+    {q:["Une vanity metric est…","Une vanity metric est…"],o:[["Une métrique impressionnante mais peu utile à la décision","Une métrique impressionnante mais peu utile à la décision"],["Une métrique toujours financière","Une métrique toujours financière"],["Une métrique obligatoire","Une métrique obligatoire"],["Un indicateur de qualité du code","Un indicateur de qualité du code"]],a:0,e:["Les vanity metrics donnent une impression de performance sans aider suffisamment à décider.","Les vanity metrics donnent une impression de performance sans aider suffisamment à décider."]},
+    {q:["Quel apprentissage est le plus utile ?","Quel apprentissage est le plus utile ?"],o:[["Celui qui permet de confirmer ou réfuter une hypothèse","Celui qui permet de confirmer ou réfuter une hypothèse"],["Celui qui produit le plus de graphiques","Celui qui produit le plus de graphiques"],["Celui qui évite les clients","Celui qui évite les clients"],["Celui qui coûte le plus cher","Celui qui coûte le plus cher"]],a:0,e:["L’apprentissage validé doit aider à réduire une incertitude stratégique.","L’apprentissage validé doit aider à réduire une incertitude stratégique."]},
+    {q:["Le Customer Development consiste notamment à…","Le Customer Development consiste notamment à…"],o:[["Comprendre les besoins et comportements des clients","Comprendre les besoins et comportements des clients"],["Écrire uniquement du code","Écrire uniquement du code"],["Définir les salaires","Définir les salaires"],["Créer des Sprints","Créer des Sprints"]],a:0,e:["Les échanges avec les clients permettent de confronter les hypothèses au terrain.","Les échanges avec les clients permettent de confronter les hypothèses au terrain."]},
+    {q:["Pourquoi mesurer avant de conclure ?","Pourquoi mesurer avant de conclure ?"],o:[["Pour disposer de preuves plutôt que d’intuitions seules","Pour disposer de preuves plutôt que d’intuitions seules"],["Pour retarder toutes les décisions","Pour retarder toutes les décisions"],["Pour supprimer les tests","Pour supprimer les tests"],["Pour augmenter les coûts","Pour augmenter les coûts"]],a:0,e:["Les données rendent les décisions plus solides que les intuitions seules.","Les données rendent les décisions plus solides que les intuitions seules."]},
+    {q:["Un MVP doit-il être un produit médiocre ?","Un MVP doit-il être un produit médiocre ?"],o:[["Non, il doit être suffisamment bon pour tester l’hypothèse ciblée","Non, il doit être suffisamment bon pour tester l’hypothèse ciblée"],["Oui toujours","Oui toujours"],["Non, il doit contenir toutes les fonctions","Non, il doit contenir toutes les fonctions"],["Oui, sans aucun utilisateur","Oui, sans aucun utilisateur"]],a:0,e:["Un MVP vise le minimum nécessaire pour apprendre, pas une mauvaise qualité.","Un MVP vise le minimum nécessaire pour apprendre, pas une mauvaise qualité."]},
+    {q:["Quand pivoter ?","Quand pivoter ?"],o:[["Lorsque les preuves indiquent que l’hypothèse ou le modèle doit changer","Lorsque les preuves indiquent que l’hypothèse ou le modèle doit changer"],["À chaque échec isolé","À chaque échec isolé"],["Uniquement après cinq ans","Uniquement après cinq ans"],["Jamais","Jamais"]],a:0,e:["Le pivot intervient lorsque l’apprentissage accumulé justifie un changement stratégique.","Le pivot intervient lorsque l’apprentissage accumulé justifie un changement stratégique."]},
+    {q:["Une expérimentation efficace doit avoir…","Une expérimentation efficace doit avoir…"],o:[["Une hypothèse, un protocole et un critère d’apprentissage","Une hypothèse, un protocole et un critère d’apprentissage"],["Uniquement un budget","Uniquement un budget"],["Un long cahier des charges","Un long cahier des charges"],["Une équipe de 20 personnes","Une équipe de 20 personnes"]],a:0,e:["Une expérimentation doit permettre de relier clairement hypothèse, observation et apprentissage.","Une expérimentation doit permettre de relier clairement hypothèse, observation et apprentissage."]},
+    {q:["Pourquoi parler de learning plutôt que seulement de delivery ?","Pourquoi parler de learning plutôt que seulement de delivery ?"],o:[["Parce que l’objectif est aussi de réduire l’incertitude","Parce que l’objectif est aussi de réduire l’incertitude"],["Parce que livrer est inutile","Parce que livrer est inutile"],["Parce que les clients ne comptent pas","Parce que les clients ne comptent pas"],["Parce que les métriques sont interdites","Parce que les métriques sont interdites"]],a:0,e:["Lean Startup cherche à apprendre ce qui permet de construire le bon produit avec moins d’incertitude.","Lean Startup cherche à apprendre ce qui permet de construire le bon produit avec moins d’incertitude."]},
+    {q:["Une cohorte permet de…","Une cohorte permet de…"],o:[["Comparer le comportement de groupes d’utilisateurs dans le temps","Comparer le comportement de groupes d’utilisateurs dans le temps"],["Créer une équipe Scrum","Créer une équipe Scrum"],["Calculer un salaire","Calculer un salaire"],["Remplacer le MVP","Remplacer le MVP"]],a:0,e:["L’analyse par cohorte permet de comparer des groupes selon leur période ou caractéristique d’entrée.","L’analyse par cohorte permet de comparer des groupes selon leur période ou caractéristique d’entrée."]},
+    {q:["Quel est un bon signal de traction ?","Quel est un bon signal de traction ?"],o:[["Un comportement répété et significatif des utilisateurs","Un comportement répété et significatif des utilisateurs"],["Une forte quantité de slides","Une forte quantité de slides"],["Un grand nombre de réunions","Un grand nombre de réunions"],["Une base de données volumineuse","Une base de données volumineuse"]],a:0,e:["La traction repose sur des comportements utilisateurs réels et significatifs.","La traction repose sur des comportements utilisateurs réels et significatifs."]},
+    {q:["Le risque principal d’une hypothèse non testée est…","Le risque principal d’une hypothèse non testée est…"],o:[["Investir fortement dans une mauvaise direction","Investir fortement dans une mauvaise direction"],["Avoir trop de données","Avoir trop de données"],["Finir trop tôt","Finir trop tôt"],["Réduire les réunions","Réduire les réunions"]],a:0,e:["Une hypothèse non testée peut conduire à gaspiller temps et ressources.","Une hypothèse non testée peut conduire à gaspiller temps et ressources."]},
+    {q:["Quelle décision suit idéalement une expérimentation ?","Quelle décision suit idéalement une expérimentation ?"],o:[["Persévérer, modifier ou pivoter selon les résultats","Persévérer, modifier ou pivoter selon les résultats"],["Toujours continuer","Toujours continuer"],["Toujours arrêter","Toujours arrêter"],["Ignorer les résultats","Ignorer les résultats"]],a:0,e:["Les résultats doivent guider une décision explicite.","Les résultats doivent guider une décision explicite."]},
+    {q:["Lean Startup privilégie…","Lean Startup privilégie…"],o:[["L’apprentissage validé et l’expérimentation rapide","L’apprentissage validé et l’expérimentation rapide"],["La planification figée","La planification figée"],["La documentation exhaustive avant test","La documentation exhaustive avant test"],["Le développement sans utilisateur","Le développement sans utilisateur"]],a:0,e:["Lean Startup privilégie l’apprentissage validé et les boucles d’expérimentation.","Lean Startup privilégie l’apprentissage validé et les boucles d’expérimentation."]},
+  ],
+  agile: [
+    {q:["Quelle valeur Agile met l’accent sur les individus ?","Quelle valeur Agile met l’accent sur les individus ?"],o:[["Les individus et leurs interactions plutôt que les processus et outils","Les individus et leurs interactions plutôt que les processus et outils"],["Les outils avant les personnes","Les outils avant les personnes"],["Les contrats avant la collaboration","Les contrats avant la collaboration"],["La documentation avant le produit","La documentation avant le produit"]],a:0,e:["Le Manifeste Agile valorise les individus et leurs interactions.","Le Manifeste Agile valorise les individus et leurs interactions."]},
+    {q:["Pourquoi recueillir régulièrement du feedback ?","Pourquoi recueillir régulièrement du feedback ?"],o:[["Pour adapter le produit et maximiser sa valeur","Pour adapter le produit et maximiser sa valeur"],["Pour éviter les changements","Pour éviter les changements"],["Pour remplir des rapports","Pour remplir des rapports"],["Pour supprimer les tests","Pour supprimer les tests"]],a:0,e:["Le feedback permet d’inspecter le résultat et d’adapter la suite.","Le feedback permet d’inspecter le résultat et d’adapter la suite."]},
+    {q:["Une équipe Agile efficace privilégie…","Une équipe Agile efficace privilégie…"],o:[["Collaboration et responsabilité partagée","Collaboration et responsabilité partagée"],["Contrôle centralisé","Contrôle centralisé"],["Silos","Silos"],["Plans immuables","Plans immuables"]],a:0,e:["La collaboration et l’autonomie soutiennent l’adaptation et la création de valeur.","La collaboration et l’autonomie soutiennent l’adaptation et la création de valeur."]},
+    {q:["Que signifie livrer tôt et souvent ?","Que signifie livrer tôt et souvent ?"],o:[["Obtenir rapidement du feedback sur une valeur utilisable","Obtenir rapidement du feedback sur une valeur utilisable"],["Terminer tout le projet avant test","Terminer tout le projet avant test"],["Multiplier les réunions","Multiplier les réunions"],["Livrer sans qualité","Livrer sans qualité"]],a:0,e:["Des livraisons fréquentes permettent d’apprendre plus tôt.","Des livraisons fréquentes permettent d’apprendre plus tôt."]},
+    {q:["L’adaptation est nécessaire lorsque…","L’adaptation est nécessaire lorsque…"],o:[["Les nouvelles informations rendent le plan moins pertinent","Les nouvelles informations rendent le plan moins pertinent"],["Le plan est signé","Le plan est signé"],["Le budget augmente","Le budget augmente"],["Une réunion est prévue","Une réunion est prévue"]],a:0,e:["L’Agile considère le changement comme une information à intégrer.","L’Agile considère le changement comme une information à intégrer."]},
+    {q:["Quelle est une bonne définition de la valeur ?","Quelle est une bonne définition de la valeur ?"],o:[["Ce qui répond à un besoin important pour les utilisateurs ou l’organisation","Ce qui répond à un besoin important pour les utilisateurs ou l’organisation"],["Le nombre de fonctionnalités","Le nombre de fonctionnalités"],["Le nombre de lignes de code","Le nombre de lignes de code"],["La taille de l’équipe","La taille de l’équipe"]],a:0,e:["La valeur dépend du bénéfice apporté, pas du volume de travail produit.","La valeur dépend du bénéfice apporté, pas du volume de travail produit."]},
+    {q:["Le feedback doit être…","Le feedback doit être…"],o:[["Régulier, concret et exploitable","Régulier, concret et exploitable"],["Uniquement annuel","Uniquement annuel"],["Toujours anonyme","Toujours anonyme"],["Évité en cas de problème","Évité en cas de problème"]],a:0,e:["Un feedback régulier et exploitable favorise l’amélioration.","Un feedback régulier et exploitable favorise l’amélioration."]},
+    {q:["Pourquoi réduire le travail inutile ?","Pourquoi réduire le travail inutile ?"],o:[["Pour concentrer l’effort sur la valeur et l’apprentissage","Pour concentrer l’effort sur la valeur et l’apprentissage"],["Pour travailler moins sans objectif","Pour travailler moins sans objectif"],["Pour supprimer la qualité","Pour supprimer la qualité"],["Pour éviter les clients","Pour éviter les clients"]],a:0,e:["Réduire le gaspillage libère de la capacité pour la valeur et l’apprentissage.","Réduire le gaspillage libère de la capacité pour la valeur et l’apprentissage."]},
+    {q:["Une équipe cross-fonctionnelle…","Une équipe cross-fonctionnelle…"],o:[["Dispose collectivement des compétences nécessaires pour produire un résultat","Dispose collectivement des compétences nécessaires pour produire un résultat"],["Ne travaille qu’avec des managers","Ne travaille qu’avec des managers"],["Est composée d’un seul métier","Est composée d’un seul métier"],["Ne peut pas être autonome","Ne peut pas être autonome"]],a:0,e:["Une équipe cross-fonctionnelle possède collectivement les compétences nécessaires pour créer un Increment ou résultat.","Une équipe cross-fonctionnelle possède collectivement les compétences nécessaires pour créer un Increment ou résultat."]},
+    {q:["Qu’est-ce qu’une rétrospective ?","Qu’est-ce qu’une rétrospective ?"],o:[["Un moment pour inspecter la façon de travailler et décider d’améliorations","Un moment pour inspecter la façon de travailler et décider d’améliorations"],["Une démonstration client","Une démonstration client"],["Un bilan financier","Un bilan financier"],["Un planning annuel","Un planning annuel"]],a:0,e:["La rétrospective porte sur le processus, les interactions et les améliorations possibles.","La rétrospective porte sur le processus, les interactions et les améliorations possibles."]},
+    {q:["Agile signifie-t-il absence de planification ?","Agile signifie-t-il absence de planification ?"],o:[["Non, la planification existe mais s’adapte","Non, la planification existe mais s’adapte"],["Oui","Oui"],["Seulement en Scrum","Seulement en Scrum"],["Oui pour les grands projets","Oui pour les grands projets"]],a:0,e:["Agile planifie, mais accepte que les plans évoluent avec l’information.","Agile planifie, mais accepte que les plans évoluent avec l’information."]},
+    {q:["Quel est l’intérêt d’un Increment utilisable ?","Quel est l’intérêt d’un Increment utilisable ?"],o:[["Permettre l’inspection et le feedback sur une valeur réelle","Permettre l’inspection et le feedback sur une valeur réelle"],["Éviter les tests","Éviter les tests"],["Figer le produit","Figer le produit"],["Remplacer les utilisateurs","Remplacer les utilisateurs"]],a:0,e:["Un résultat utilisable permet d’obtenir du feedback concret.","Un résultat utilisable permet d’obtenir du feedback concret."]},
+    {q:["Quelle approche réduit le risque ?","Quelle approche réduit le risque ?"],o:[["Apprendre tôt grâce à de petites boucles de feedback","Apprendre tôt grâce à de petites boucles de feedback"],["Tout construire avant validation","Tout construire avant validation"],["Multiplier les dépendances","Multiplier les dépendances"],["Figer les besoins","Figer les besoins"]],a:0,e:["Les petites boucles réduisent l’incertitude progressivement.","Les petites boucles réduisent l’incertitude progressivement."]},
+    {q:["La transparence permet…","La transparence permet…"],o:[["Une compréhension partagée de la situation réelle","Une compréhension partagée de la situation réelle"],["De masquer les problèmes","De masquer les problèmes"],["D’éviter l’inspection","D’éviter l’inspection"],["De supprimer les métriques","De supprimer les métriques"]],a:0,e:["Sans transparence, inspection et adaptation deviennent difficiles.","Sans transparence, inspection et adaptation deviennent difficiles."]},
+    {q:["Pourquoi privilégier la simplicité ?","Pourquoi privilégier la simplicité ?"],o:[["Pour maximiser le travail non fait et réduire la complexité inutile","Pour maximiser le travail non fait et réduire la complexité inutile"],["Pour supprimer les exigences","Pour supprimer les exigences"],["Pour éviter la qualité","Pour éviter la qualité"],["Pour réduire le feedback","Pour réduire le feedback"]],a:0,e:["La simplicité aide à réduire le travail inutile et la complexité.","La simplicité aide à réduire le travail inutile et la complexité."]},
+    {q:["Une dépendance critique doit être…","Une dépendance critique doit être…"],o:[["Identifiée et gérée activement","Identifiée et gérée activement"],["Ignorée","Ignorée"],["Cachée","Cachée"],["Multipliée","Multipliée"]],a:0,e:["Les dépendances importantes doivent être visibles et traitées pour protéger le flux.","Les dépendances importantes doivent être visibles et traitées pour protéger le flux."]},
+    {q:["Une roadmap Agile est…","Une roadmap Agile est…"],o:[["Une direction évolutive plutôt qu’une promesse figée de détails","Une direction évolutive plutôt qu’une promesse figée de détails"],["Un contrat immuable","Un contrat immuable"],["Un planning horaire","Un planning horaire"],["Une liste de tâches technique","Une liste de tâches technique"]],a:0,e:["Une roadmap donne une direction et peut évoluer selon les apprentissages.","Une roadmap donne une direction et peut évoluer selon les apprentissages."]},
+    {q:["Quelle posture favorise l’amélioration ?","Quelle posture favorise l’amélioration ?"],o:[["Expérimenter, mesurer et apprendre","Expérimenter, mesurer et apprendre"],["Chercher un responsable","Chercher un responsable"],["Éviter les problèmes","Éviter les problèmes"],["Ne jamais changer","Ne jamais changer"]],a:0,e:["L’amélioration repose sur l’apprentissage et l’expérimentation.","L’amélioration repose sur l’apprentissage et l’expérimentation."]},
+    {q:["Le rôle des parties prenantes est notamment de…","Le rôle des parties prenantes est notamment de…"],o:[["Apporter du contexte et du feedback","Apporter du contexte et du feedback"],["Diriger chaque tâche","Diriger chaque tâche"],["Écrire tout le code","Écrire tout le code"],["Remplacer l’équipe","Remplacer l’équipe"]],a:0,e:["Les parties prenantes contribuent au contexte, aux besoins et au feedback.","Les parties prenantes contribuent au contexte, aux besoins et au feedback."]},
+    {q:["Le meilleur indicateur d’une démarche Agile est…","Le meilleur indicateur d’une démarche Agile est…"],o:[["La capacité à créer de la valeur et à s’adapter grâce au feedback","La capacité à créer de la valeur et à s’adapter grâce au feedback"],["Le nombre de réunions","Le nombre de réunions"],["La taille du backlog","La taille du backlog"],["Le nombre de documents","Le nombre de documents"]],a:0,e:["Une démarche Agile se juge surtout à sa capacité à créer de la valeur et à apprendre/adaptater.","Une démarche Agile se juge surtout à sa capacité à créer de la valeur et à apprendre/adaptater."]},
+  ],
+};
+let knowledgeCurrent=null, knowledgeIndex=0, knowledgeScore=0, knowledgeLocked=false;
+function openKnowledge(type){knowledgeCurrent=type;knowledgeIndex=0;knowledgeScore=0;knowledgeLocked=false;const app=document.getElementById("knowledgeApp");app.style.display="block";app.innerHTML='<div class="knowledge-head"><div><span class="tag">Quiz '+type+'</span><h3>20 QCM · testez vos connaissances</h3></div><span id="knowledgeCounter">1 / 20</span></div><div class="knowledge-progress"><i id="knowledgeBar"></i></div><div id="knowledgeQuestion"></div>';renderKnowledge();app.scrollIntoView({behavior:"smooth",block:"start"})}
+function renderKnowledge(){const q=KNOWLEDGE[knowledgeCurrent][knowledgeIndex];knowledgeLocked=false;document.getElementById("knowledgeCounter").textContent=(knowledgeIndex+1)+" / 20";document.getElementById("knowledgeBar").style.width=(knowledgeIndex/20*100)+"%";document.getElementById("knowledgeQuestion").innerHTML='<div class="knowledge-q">'+q.q[document.documentElement.lang==='en'?1:0]+'</div><div class="answers">'+q.o.map((o,i)=>'<button class="answer" onclick="answerKnowledge('+i+')"><b>'+String.fromCharCode(65+i)+'.</b> '+o[document.documentElement.lang==='en'?1:0]+'</button>').join('')+'</div>'}
+function answerKnowledge(i){if(knowledgeLocked)return;knowledgeLocked=true;const q=KNOWLEDGE[knowledgeCurrent][knowledgeIndex],correct=i===q.a;if(correct)knowledgeScore++;const btns=document.querySelectorAll('.answer');btns.forEach((b,n)=>{if(n===q.a)b.classList.add('correct');if(n===i&&!correct)b.classList.add('wrong')});const lang=document.documentElement.lang==='en'?1:0;const next=knowledgeIndex<19?'<button class="btn" onclick="nextKnowledge()">'+(lang?'Next question':'Question suivante')+' →</button>':'<button class="btn" onclick="showKnowledgeResult()">'+(lang?'See my result':'Voir mon résultat')+' →</button>';document.getElementById('knowledgeQuestion').insertAdjacentHTML('beforeend','<div class="explain"><strong>'+(correct?(lang?'Correct answer':'Bonne réponse'):(lang?'Not quite':'À revoir'))+'</strong><p>'+q.e[lang]+'</p><div class="actions">'+next+'</div></div>')}
+function nextKnowledge(){knowledgeIndex++;renderKnowledge()}
+function showKnowledgeResult(){const lang=document.documentElement.lang==='en'?1:0,score=Math.round(knowledgeScore/20*100);let badge=score>=90?(lang?'Agile Expert':'Agile Expert'):score>=75?(lang?'Strong foundation':'Bon niveau'):score>=60?(lang?'Good progress':'En progression'):(lang?'Keep learning':'À consolider');let advice=score>=85?(lang?'Excellent. You can move to advanced scenarios and practice.':'Excellent. Passez à des cas avancés et à la mise en pratique.'):(lang?'Review the explanations you missed, then replay the quiz.':'Relisez les explications des réponses manquées, puis rejouez le quiz.');document.getElementById('knowledgeBar').style.width='100%';document.getElementById('knowledgeQuestion').innerHTML='<div class="result"><span class="tag">'+(lang?'Final result':'Résultat final')+'</span><div class="quiz-score">'+knowledgeScore+'<small>/20</small></div><h3>'+score+'% · '+badge+'</h3><p>'+advice+'</p><div class="badge">🏅 '+(lang?'Badge of success':'Badge de réussite')+' · '+badge+'</div><div class="actions center" style="margin-top:25px"><button class="btn" onclick="openKnowledge(knowledgeCurrent)">'+(lang?'Replay quiz':'Rejouer le quiz')+'</button><a class="btn ghost" href="#catalogue">'+(lang?'See training':'Voir les formations')+'</a></div></div>'}
+
+const I18N_EN={
+nav_catalogue:"Catalogue",catalogue_tag:"Training catalogue",catalogue_title:"Agile training designed to learn, practice and transform ways of working.",catalogue_lead:"Tailored programmes for companies, higher-education institutions and training centres, with a strong focus on workshops and hands-on practice.",cat_scrum_duration:"2 days · 14h",cat_scrum_title:"Master the Scrum framework",cat_scrum_goal:"Understand and apply Scrum to structure a team, cadence delivery and maximize value for users.",cat_scrum_1:"Agile foundations and mindset: Agile Manifesto, uncertainty and comparison with the Waterfall model.",cat_scrum_2:"Pillars and accountabilities: Transparency, Inspection, Adaptation, Product Owner, Scrum Master and Developers.",cat_scrum_3:"Artifacts: Product Backlog, Sprint Backlog and Definition of Done.",cat_scrum_4:"Events: Sprint Planning, Daily Scrum, Sprint Review and Retrospective.",cat_scrum_5:"Workshop: complete end-to-end Scrum project simulation.",cat_scrum_audience:"Audience: tech students, development teams, project managers",cat_kanban_duration:"1 day · 7h",cat_kanban_title:"Optimize flow with Kanban",cat_kanban_goal:"Set up a Kanban system to smooth daily activity, reduce multitasking and improve collective effectiveness.",cat_kanban_1:"Principles and origins: understand flow and the incremental approach.",cat_kanban_2:"Board design: columns, cards, queues and explicit transition rules.",cat_kanban_3:"WIP: limit work in progress to relieve congestion.",cat_kanban_4:"Metrics: Lead Time, Cycle Time and Throughput.",cat_kanban_5:"Continuous improvement: flow reviews and blocker identification.",cat_kanban_audience:"Audience: cross-functional teams, Ops, HR, Support",cat_lean_duration:"2 days · 14h",cat_lean_title:"Innovate with Lean Startup",cat_lean_goal:"De-risk the launch of a new product, service or project through rapid testing, measurement and learning.",cat_lean_1:"Uncertainty and innovation: Build-Measure-Learn cycle.",cat_lean_2:"Hypotheses and MVP: risk mapping and Minimum Viable Product design.",cat_lean_3:"Experimentation and measurement: actionable metrics and user testing plan.",cat_lean_4:"Pivot: analyze learning and decide whether to pivot or persevere.",cat_lean_5:"Workshop: pitch and real-world test of an innovation project.",cat_lean_audience:"Audience: entrepreneurship students, project founders",catalogue_for:"For whom?",catalogue_for_title:"Companies, schools and training organizations",catalogue_for_text:"In-house or inter-company interventions, courses, project workshops and assessment panels for Bachelor, Master or continuing education programmes.",catalogue_format:"Formats",catalogue_format_title:"On-site or remote, with deliverables",catalogue_format_text:"Content can be adapted to the context, audience and objectives. Every intervention is based on a tailored proposal.",catalogue_quote:"Quote",catalogue_quote_title:"Let’s build the right learning path",catalogue_quote_text:"Pricing is adapted to format, group size and level of customization. Tailored proposal within 48 hours.",catalogue_cta:"Discuss a training programme",nav_formations:"Training",nav_diagnostic:"Assessment",nav_quiz:"Quizzes",nav_rdv:"Book a call",nav_method:"Approach",nav_about:"About me",nav_book:"30 min with me",
+hero_title:'The right <span class="grad">Agile tips</span> to move into action.',hero_lead:"Practical training, maturity assessments and coaching to help teams create more value, collaborate and adapt.",see_training:"View training",assess:"Assess my maturity",hero_meta:"Consulting • Training • Assessment • Workshops • by Twagirumukiza",maturity:"Your maturity",level:"Level: Advanced intermediate",next_step:"Next step",next_desc:"Identify your improvement areas and choose the right learning path.",training_title:"Learn Agile without staying in theory.",training_lead:"Practice-oriented programs using professional cases, workshops and simulations.",scrum_desc:"Master the framework, accountabilities, events, artifacts, value and empiricism.",kanban_desc:"Visualize flow, limit WIP, reduce blockers and improve the way work moves through the system.",lean_desc:"Test hypotheses, experiment, measure learning and make decisions with less risk.",diag_title:"Assess your Agile maturity in 20 questions.",diag_lead:"A method-based assessment to identify strengths, improvement areas and the right training path.",rdv_title:"Let’s talk about your Agile needs.",rdv_lead:"A 30-minute conversation to understand your context, goals and the right training or coaching approach.",method_title:"Understand. Practice. Measure. Improve.",method_lead:"A simple approach to turn training into operational results.",cta_title:"An Agile project to launch or improve?",cta_desc:"Book a 30-minute conversation to discuss your context.",book:"Book a meeting",quiz_tag:"Knowledge quizzes",quiz_title:"Test your Agile knowledge in 20 MCQs.",quiz_lead:"One correct answer, immediate correction, explanation, final score and achievement badge.",start_quiz:"Start quiz",quiz_scrum_desc:"Framework, accountabilities, events, artifacts, value and empiricism.",quiz_kanban_desc:"Flow, WIP, metrics, explicit policies and continuous improvement.",quiz_lean_desc:"Hypotheses, MVP, experimentation, pivot and actionable metrics.",quiz_agile_desc:"Agile culture, collaboration, value, feedback and adaptation.",formations_tag:"Training",talk_training:"Discuss it",twenty_questions:"20 questions",twenty_mcq:"20 MCQs",diag_scrum_desc:"Foundations, practices, situations and continuous improvement.",diag_kanban_desc:"Flow, WIP, policies, metrics and improvement.",diag_lean_desc:"Hypotheses, MVP, experimentation, metrics and pivot.",diag_agile_desc:"Value, collaboration, adaptation, culture and learning.",start_assessment:"Start assessment",quiz_scrum_title:"Scrum quiz",quiz_kanban_title:"Kanban quiz",quiz_lean_title:"Lean Startup quiz",quiz_agile_title:"Agile global quiz",about_tag:"About me",about_title:"An Agile approach built on practice, knowledge sharing and field experience.",about_lead:"Agile.tips is led by Twagirumukiza, an independent trainer and consultant with an action-oriented approach: understand the methods, experiment with them and connect them to real organizational challenges.",about_path_tag:"My background",about_path_title:"From project management to sharing Agile practices",about_path_p1:"In 2018, I obtained a certificate in Agile project management methods and project initiation after a seven-month training programme at Simplon.co. This was a key step in my journey around Agile methods, project management and learning through practice.",about_path_p2:"Since then, I have applied these approaches through training, coaching and consulting, with a strong focus on business context, collaboration and continuous improvement.",about_value_tag:"What I bring",value_practice_title:"Hands-on teaching",value_practice:"Concepts turned into workshops, real cases and professional situations.",value_project_title:"Project culture",value_project:"A focus on value, priorities, risks, stakeholders and execution.",value_cross_title:"Cross-functional perspective",value_cross:"Training and consulting experience also applied to cybersecurity, governance, compliance and risk management.",value_transfer_title:"Knowledge transfer",value_transfer:"Content designed to make learners and teams genuinely autonomous.",credential_cert:"Certificate — Agile project management methods and project initiation",credential_training:"Seven-month training at Simplon.co",today:"Today",credential_today:"Training • Consulting • Coaching • Cybersecurity & GRC",rdv_tag:"Book a call",thirty_minutes:"30 minutes",agile_training:"Agile training",cal_text:"Choose a time slot directly in my Cal.com calendar.",book_slot:"Book my slot →",for_companies:"For companies",inhouse_training:"In-house training",inhouse_text:"Want to train a team? We can adapt the content to your organization and challenges.",talk_need:"Discuss my needs",method_tag:"agile.tips approach",step1_title:"Understand",step1_text:"The essential principles and concepts.",step2_title:"Practice",step2_text:"Workshops, simulations and real cases.",step3_title:"Measure",step3_text:"Maturity assessment and feedback.",step4_title:"Improve",step4_text:"Training and an action plan tailored to your needs.",free_assessment:"Free assessment",agile_assessment:"Agile assessment",your_result:"Your result",recommended_training:"Recommended training",footer_trainings:"Scrum, Kanban & Lean Startup training",legal:"Legal notice",privacy:"Privacy policy",cookies:"Cookies",terms:"Terms & Licence",methods_image_alt:"Scrum, Kanban and Lean Startup methods",on_quote:"On quote"
+};
+function cacheFrenchTranslations(){document.querySelectorAll("[data-i18n]").forEach(el=>{if(!el.dataset.fr)el.dataset.fr=el.innerHTML;});document.querySelectorAll("[data-i18n-alt]").forEach(el=>{if(!el.dataset.frAlt)el.dataset.frAlt=el.alt;});}
+function setLang(lang){cacheFrenchTranslations();const isEn=lang==='en';document.documentElement.lang=isEn?'en':'fr';document.querySelectorAll("[data-i18n]").forEach(el=>{const k=el.dataset.i18n;if(isEn&&I18N_EN[k]!==undefined)el.innerHTML=I18N_EN[k];else if(!isEn&&el.dataset.fr!==undefined)el.innerHTML=el.dataset.fr;});document.querySelectorAll("[data-i18n-alt]").forEach(el=>{const k=el.dataset.i18nAlt;if(isEn&&I18N_EN[k]!==undefined)el.alt=I18N_EN[k];else if(!isEn&&el.dataset.frAlt!==undefined)el.alt=el.dataset.frAlt;});document.getElementById("frBtn")?.classList.toggle("lang-active",!isEn);document.getElementById("enBtn")?.classList.toggle("lang-active",isEn);localStorage.setItem("agileLang",isEn?"en":"fr");updateLegalLabels();setFontSize(localStorage.getItem("agileFont")==="large"?"large":"normal");if(document.getElementById('legalOverlay')?.style.display==='flex'){const active=['legal','privacy','cookies','terms'].find(k=>document.getElementById(k+'Tab')?.classList.contains('active'))||'legal';openLegal(active);}updateMobileLabels();}
+function toggleMobileMenu(){const m=document.getElementById('mobileMenu'),b=document.getElementById('burgerBtn');if(!m)return;const open=m.classList.toggle('open');b?.setAttribute('aria-expanded',open?'true':'false');b?.setAttribute('aria-label',document.documentElement.lang==='en'?(open?'Close menu':'Open menu'):(open?'Fermer le menu':'Ouvrir le menu'));}
+function closeMobileMenu(){document.getElementById('mobileMenu')?.classList.remove('open');document.getElementById('burgerBtn')?.setAttribute('aria-expanded','false');}
+function updateMobileLabels(){const en=document.documentElement.lang==='en';const b=document.getElementById('burgerBtn');if(b)b.setAttribute('aria-label',en?'Open menu':'Ouvrir le menu');}
+function toggleTheme(){document.body.classList.toggle("dark");localStorage.setItem("agileTheme",document.body.classList.contains("dark")?"dark":"light")}
+const LEGAL={fr:{legal:{title:"Mentions légales",body:`<p><strong>Éditeur du site</strong></p><div class="legal-meta"><div><strong>Nom</strong><br>TWAGIRUMUKIZA Innocent</div><div><strong>Statut</strong><br>Entrepreneur individuel</div><div><strong>SIREN</strong><br>454 007 691</div><div><strong>SIRET</strong><br>454 007 691 00016</div><div><strong>Activité (APE)</strong><br>62.02A — Conseil en systèmes et logiciels informatiques</div><div><strong>Établissement</strong><br>87 rue Baudricourt, 75013 Paris, France</div><div><strong>Téléphone</strong><br>06 18 25 26 52</div><div><strong>Email</strong><br>inno.twa@gmail.com</div></div><p><strong>Directeur de la publication :</strong> Innocent Twagirumukiza.</p><p><strong>Hébergement :</strong> GitHub Pages, service de GitHub, Inc., 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, États-Unis.</p><p>Les contenus, textes, supports, marques, éléments graphiques et ressources présents sur agile.tips sont protégés par les règles applicables en matière de propriété intellectuelle. Toute reproduction ou réutilisation non autorisée est interdite.</p>`},privacy:{title:"Politique de confidentialité",body:`<p>Agile.tips est édité par TWAGIRUMUKIZA Innocent, entrepreneur individuel.</p><h3>Données susceptibles d’être traitées</h3><p>Le site peut traiter les informations que vous fournissez volontairement lors d’une prise de contact ou d’une réservation : identité, coordonnées et informations relatives à votre demande.</p><h3>Finalités</h3><ul><li>répondre aux demandes et organiser les échanges ;</li><li>proposer et gérer les prestations de formation et de conseil ;</li><li>permettre la réservation d’un rendez-vous via Cal.com.</li></ul><h3>Vos droits</h3><p>Vous disposez des droits prévus par la réglementation applicable, notamment accès, rectification, effacement, limitation et opposition lorsque les conditions sont réunies. Pour exercer vos droits : <a href="mailto:inno.twa@gmail.com">inno.twa@gmail.com</a>.</p><p>Vous pouvez également saisir la CNIL si vous estimez, après contact, que vos droits ne sont pas respectés.</p>`},cookies:{title:"Politique cookies",body:`<p>Agile.tips privilégie un fonctionnement simple et n’utilise pas de cookies publicitaires sur cette version du site.</p><p>Le site peut utiliser le stockage local du navigateur pour mémoriser des préférences fonctionnelles telles que la langue, le thème et la taille des caractères. Ce stockage est distinct des cookies.</p><p>Les services externes, notamment Cal.com ou LinkedIn lorsqu’ils sont ouverts, peuvent appliquer leurs propres règles de confidentialité et de cookies.</p>`},terms:{title:"CGU & Licence d’utilisation",body:`<p><strong>Dernière mise à jour :</strong> 25 août 2026</p><h3>1. Objet</h3><p>Agile.tips est une plateforme éditée par TWAGIRUMUKIZA Innocent proposant des contenus pédagogiques, des diagnostics de maturité Agile, des quiz de connaissances et la présentation de formations Scrum, Kanban et Lean Startup.</p><h3>2. Accès et utilisation autorisée</h3><p>L’utilisateur peut consulter le site, réaliser les diagnostics et quiz et utiliser les résultats à des fins personnelles, pédagogiques ou professionnelles internes.</p><h3>3. Propriété intellectuelle</h3><p>Sauf mention contraire, les textes, questions, réponses, explications, diagnostics, structures pédagogiques, supports, graphismes, éléments de marque et autres contenus originaux d’Agile.tips sont protégés par les droits de propriété intellectuelle applicables et restent la propriété de TWAGIRUMUKIZA Innocent ou de leurs ayants droit.</p><h3>4. Licence d’utilisation</h3><p>La consultation du site accorde uniquement un droit personnel, non exclusif et non transférable d’utilisation des fonctionnalités proposées. Elle n’emporte aucune cession de droits de propriété intellectuelle.</p><p>Sont notamment interdits sans autorisation écrite préalable : la copie substantielle, la republication, la revente, la redistribution, l’intégration des QCM ou diagnostics dans une autre plateforme, la création d’une base de données concurrente, la commercialisation des contenus ou leur diffusion sous une autre marque.</p><h3>5. Extraction automatisée et IA</h3><p>Sauf autorisation écrite préalable, il est interdit d’effectuer une extraction systématique ou massive des contenus du site, notamment au moyen de robots ou de procédés automatisés, dans le but de constituer une base de données, un jeu de données, un corpus, un service concurrent ou d’alimenter, entraîner ou évaluer un système d’intelligence artificielle.</p><h3>6. Diagnostics et quiz</h3><p>Les scores, recommandations et badges ont une finalité pédagogique et informative. Ils ne constituent ni une certification professionnelle, ni une accréditation officielle Scrum, Kanban ou Lean Startup, ni un audit organisationnel.</p><h3>7. Formations</h3><p>Les programmes présentés sur le catalogue peuvent être adaptés au contexte, au public, à la durée et aux objectifs convenus. Les conditions commerciales définitives sont celles du devis, de la convention ou du contrat applicable.</p><h3>8. Contenus tiers et liens externes</h3><p>Certains liens ou services accessibles depuis Agile.tips peuvent relever de tiers. Leur utilisation est soumise à leurs propres conditions et politiques.</p><h3>9. Disponibilité et responsabilité</h3><p>TWAGIRUMUKIZA Innocent s’efforce de maintenir le site accessible, utile et à jour, sans garantir une disponibilité permanente ni l’absence totale d’erreurs. Les informations et résultats des outils ne remplacent pas une analyse professionnelle adaptée à une situation particulière.</p><h3>10. Modification</h3><p>Les présentes CGU & Licence peuvent être mises à jour afin de tenir compte de l’évolution du site, des services ou du cadre juridique. La version publiée sur le site est la version applicable à compter de sa date de mise à jour.</p><h3>11. Droit applicable</h3><p>Les présentes conditions sont soumises au droit français, sous réserve des règles impératives applicables.</p><p><strong>Contact :</strong> <a href="mailto:inno.twa@gmail.com">inno.twa@gmail.com</a></p>`}},en:{legal:{title:"Legal notice",body:`<p><strong>Website publisher</strong></p><div class="legal-meta"><div><strong>Name</strong><br>TWAGIRUMUKIZA Innocent</div><div><strong>Legal status</strong><br>Sole trader / Individual entrepreneur</div><div><strong>SIREN</strong><br>454 007 691</div><div><strong>SIRET</strong><br>454 007 691 00016</div><div><strong>Business activity (APE)</strong><br>62.02A — Computer systems and software consultancy</div><div><strong>Establishment</strong><br>87 rue Baudricourt, 75013 Paris, France</div><div><strong>Phone</strong><br>+33 6 18 25 26 52</div><div><strong>Email</strong><br>inno.twa@gmail.com</div></div><p><strong>Publication director:</strong> Innocent Twagirumukiza.</p><p><strong>Hosting:</strong> GitHub Pages, a service provided by GitHub, Inc., 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, USA.</p><p>Content, texts, training materials, trademarks, graphics and resources available on agile.tips are protected by applicable intellectual property rules. Unauthorized reproduction or reuse is prohibited.</p>`},privacy:{title:"Privacy policy",body:`<p>Agile.tips is published by TWAGIRUMUKIZA Innocent, sole trader.</p><h3>Data that may be processed</h3><p>The website may process information you voluntarily provide when contacting the publisher or booking a meeting: identity, contact details and information related to your request.</p><h3>Purposes</h3><ul><li>answering requests and arranging discussions;</li><li>providing and managing training and consulting services;</li><li>enabling meeting bookings through Cal.com.</li></ul><h3>Your rights</h3><p>You have the rights provided by applicable data-protection law, including access, rectification, erasure, restriction and objection where applicable. To exercise your rights: <a href="mailto:inno.twa@gmail.com">inno.twa@gmail.com</a>.</p><p>You may also contact the French CNIL if you believe your rights have not been respected after contacting the publisher.</p>`},cookies:{title:"Cookie policy",body:`<p>Agile.tips does not use advertising cookies in this version of the website.</p><p>The site may use browser local storage to remember functional preferences such as language, theme and font size. Local storage is distinct from cookies.</p><p>External services, including Cal.com or LinkedIn when opened, may apply their own privacy and cookie rules.</p>`},terms:{title:"Terms & Licence",body:`<p><strong>Last updated:</strong> August 25, 2026</p><h3>1. Purpose</h3><p>Agile.tips is a platform published by TWAGIRUMUKIZA Innocent providing educational content, Agile maturity assessments, knowledge quizzes and information about Scrum, Kanban and Lean Startup training.</p><h3>2. Permitted use</h3><p>Users may browse the website, complete assessments and quizzes, and use the results for personal, educational or internal professional purposes.</p><h3>3. Intellectual property</h3><p>Unless otherwise stated, the texts, questions, answers, explanations, assessments, educational structures, materials, graphics, branding elements and other original Agile.tips content are protected by applicable intellectual property rights and remain the property of TWAGIRUMUKIZA Innocent or their respective rights holders.</p><h3>4. Licence of use</h3><p>Access to the website grants only a personal, non-exclusive and non-transferable right to use the available features. No intellectual property rights are assigned or transferred.</p><p>Without prior written permission, users may not substantially copy, republish, resell, redistribute, integrate the quizzes or assessments into another platform, create a competing database, commercially exploit the content or publish it under another brand.</p><h3>5. Automated extraction and AI</h3><p>Without prior written permission, systematic or large-scale extraction of website content, including through bots or automated processes, is prohibited when intended to create a database, dataset, corpus, competing service, or to feed, train or evaluate an artificial intelligence system.</p><h3>6. Assessments and quizzes</h3><p>Scores, recommendations and badges are provided for educational and informational purposes. They are not professional certification, official Scrum, Kanban or Lean Startup accreditation, or an organisational audit.</p><h3>7. Training</h3><p>Training programmes may be adapted to the agreed context, audience, duration and objectives. Final commercial terms are those stated in the applicable quotation, agreement or contract.</p><h3>8. Third-party content and links</h3><p>Some links or services accessible from Agile.tips may be operated by third parties. Their use is subject to their own terms and policies.</p><h3>9. Availability and liability</h3><p>TWAGIRUMUKIZA Innocent aims to keep the website useful, accessible and up to date, but does not guarantee permanent availability or complete absence of errors. Tool outputs and information do not replace professional analysis tailored to a specific situation.</p><h3>10. Changes</h3><p>These Terms & Licence may be updated as the website, services or legal framework evolve. The version published on the website applies from its stated update date.</p><h3>11. Governing law</h3><p>These terms are governed by French law, subject to any mandatory rules that apply.</p><p><strong>Contact:</strong> <a href="mailto:inno.twa@gmail.com">inno.twa@gmail.com</a></p>`}}};
+function openLegal(type){const lang=document.documentElement.lang==='en'?'en':'fr';const item=LEGAL[lang][type]||LEGAL[lang].legal;document.getElementById('legalContent').innerHTML='<h2 id="legalTitle">'+item.title+'</h2>'+item.body;document.getElementById('legalOverlay').style.display='flex';['legal','privacy','cookies','terms'].forEach(k=>{const el=document.getElementById(k+'Tab');if(el)el.classList.toggle('active',k===type)});}
+function closeLegal(){document.getElementById('legalOverlay').style.display='none'}
+function updateLegalLabels(){const en=document.documentElement.lang==='en';const labels={legal:en?'Legal notice':'Mentions légales',privacy:en?'Privacy policy':'Politique de confidentialité',cookies:en?'Cookie policy':'Politique cookies',terms:en?'Terms & Licence':'CGU & Licence'};Object.entries(labels).forEach(([k,v])=>{const el=document.getElementById(k+'Tab');if(el)el.textContent=v;});}
+
+function setFontSize(size){const large=size==="large";document.documentElement.style.setProperty("--font-scale",large?"1.12":"1");document.body.classList.toggle("font-large",large);document.body.classList.toggle("font-normal",!large);localStorage.setItem("agileFont",large?"large":"normal");const minus=document.getElementById("fontMinus"),plus=document.getElementById("fontPlus");if(minus&&plus){minus.classList.toggle("active",!large);plus.classList.toggle("active",large);minus.disabled=!large;plus.disabled=large;const en=document.documentElement.lang==="en";minus.textContent="A−";plus.textContent="A+";minus.setAttribute("aria-label",en?"Decrease font size":"Réduire la taille des caractères");plus.setAttribute("aria-label",en?"Increase font size":"Augmenter la taille des caractères");minus.title=en?"Decrease font size":"Réduire la taille des caractères";plus.title=en?"Increase font size":"Augmenter la taille des caractères"}}
+(function(){cacheFrenchTranslations();if(localStorage.getItem("agileTheme")==="dark")document.body.classList.add("dark");updateLegalLabels();setFontSize(localStorage.getItem("agileFont")==="large"?"large":"normal");setLang(localStorage.getItem("agileLang")==="en"?"en":"fr");})();
+</script>
+</body>
+</html>
